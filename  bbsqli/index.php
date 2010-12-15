@@ -1,3 +1,4 @@
+<h1>Live test</h1>
 <?php
 /*
  * Created on Dec 9, 2010
