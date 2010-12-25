@@ -1,3 +1,21 @@
+<?php
+require_once 'db.php';
+
+switch ($_GET["cat"]) {
+	case 1 :
+		$titre = 'Administrateurs';
+		$active = 1;
+		break;
+	case 2 :
+		$titre = 'Mod&eacute;rateurs';
+		$active = 2;
+		break;
+	case 3 :
+		$titre = 'Utilisateurs';
+		$active = 3;
+		break;
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +39,7 @@
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <ul id="mainNav">
-        	<li><a href="#" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
+        	<li><a href="../index.php" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
         	<li><a href="#">ADMINISTRATION</a></li>
         	<li><a href="#">OPTION</a></li>
         	<li class="logout"><a href="#">DECONNEXION</a></li>
@@ -32,9 +50,9 @@
 			<div id="container">
         		<div id="sidebar">
                 	<ul class="sideNav">
-                    	<li><a href="#">Utilisateurs</a></li>
-                    	<li><a href="#" class="active">Mod&eacute;rateurs</a></li>
-                    	<li><a href="#">Administrateurs</a></li>
+                    	<li><a href="admin.php?cat=3" <?php if($active==3) echo " class=active"; ?>>Utilisateurs</a></li>
+                    	<li><a href="admin.php?cat=2" <?php if($active==2) echo " class=active"; ?>>Mod&eacute;rateurs</a></li>
+                    	<li><a href="admin.php?cat=1" <?php if($active==1) echo " class=active"; ?>>Administrateurs</a></li>
                     	<li><a href="#">Mon Profil</a></li>                    	
                     </ul>
                     <!-- // .sideNav -->
@@ -42,32 +60,37 @@
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Administration</a> &raquo; <a href="#" class="active">Mod&eacute;rateurs</a></h2>
+                <h2><a href="#">Administration</a> &raquo; <a href="#" class="active"><?php echo $titre; ?></a></h2>
                 
                 <div id="main">
                 	<form action="" class="jNice">
-					<h3>Sample section</h3>
+					<h3>Liste des <?php echo $titre; ?></h3>
                     	<table cellpadding="0" cellspacing="0">
+                    	<?php
+$sql = 'SELECT IdUtilisateur, Login, Email' .
+' FROM Utilisateur WHERE Type=' . $_GET["cat"];
+
+$results = $conn->query($sql);
+
+if ($results->num_rows) {
+	while ($row = $results->fetch_row()) {
+
+		echo '<tr>' .
+		'<td>';
+		echo $row[1] . '</td>'
+		//  .'<td>'; echo $row[2].'</td>'
+		 . '<td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>' .
+		'</tr>';
+	}
+}
+?>                   	
+							 
+                            <!--                      
 							<tr>
                                 <td>Vivamus rutrum nibh in felis tristique vulputate</td>
                                 <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr class="odd">
-                                <td>Duis adipiscing lorem iaculis nunc</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr>
-                                <td>Donec sit amet nisi ac magna varius tempus</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr class="odd">
-                                <td>Duis ultricies laoreet felis</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
-							<tr>
-                                <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                                <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                            </tr>                        
+                            </tr>  
+                            -->                      
                         </table>
 					<h3>Another section</h3>
                     	<fieldset>
@@ -96,7 +119,7 @@
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Feel free to use and customize it. <a href="http://www.perspectived.com">Credit is appreciated.</a></p>
+        <p id="footer">Mon Blog &#169; 2010-2011</p>
     </div>
     <!-- // #wrapper -->
 </body>
