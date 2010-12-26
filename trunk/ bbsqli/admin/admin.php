@@ -1,5 +1,6 @@
 <?php
 require_once 'db.php';
+require_once 'lib.php';
 
 switch ($_GET["cat"]) {
 	case 1 :
@@ -67,6 +68,7 @@ switch ($_GET["cat"]) {
 					<h3>Liste des <?php echo $titre; ?></h3>
                     	<table cellpadding="0" cellspacing="0">
                     	<?php
+
 $sql = 'SELECT IdUtilisateur, Login, Email' .
 ' FROM Utilisateur WHERE Type=' . $_GET["cat"];
 
@@ -92,22 +94,23 @@ if ($results->num_rows) {
                             </tr>  
                             -->                      
                         </table>
-					<h3>Another section</h3>
+                        </form>
+					<h3>Cr&eacute;er un nouveau compte</h3>
+					<form action="admin_creer.php" method="post" class="jNice">
+					
                     	<fieldset>
-                        	<p><label>Sample label:</label><input type="text" class="text-long" /></p>
-                        	<p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
-                            <p><label>Sample label:</label>
-                            <select>
-                            	<option>Select one</option>
-                            	<option>Select two</option>
-                            	<option>Select tree</option>
-                            	<option>Select one</option>
-                            	<option>Select two</option>
-                            	<option>Select tree</option>
-                            </select>
+                    		<p><label>Type :</label>
+                            <select name="type">
+                            	<option value="2">Mod&eacute;rateur</option>
+                            	<option value="1">Administrateur</option>
+                            	 </select>
                             </p>
-                        	<p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
-                            <input type="submit" value="Submit Query" />
+                        	<p><label>Identifiant* :</label><input type="text" name="login" class="text-long" /></p>
+                        	<p><label>Mot de passe* :</label><input type="text" name="password" class="text-long" /></p>
+                            <p><label>Email* :</label><input type="text" name="email" class="text-long" />
+                            <input type="hidden" name="curPage" class="text-long" />
+                            </p>
+                        	<input type="submit" value="Enregistrer" />
                         </fieldset>
                     </form>
                 </div>
