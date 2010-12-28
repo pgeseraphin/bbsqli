@@ -2,6 +2,9 @@
 require_once 'db.php';
 require_once 'lib.php';
 
+session_start();
+$_SESSION['curPageURL'] = curPageURL();
+
 //pour obtenir le lien actif (variable 'cat')
 switch ($_GET["cat"]) {
 	case 1 :
@@ -32,6 +35,63 @@ switch ($_GET["cat"]) {
 <!-- JavaScripts-->
 <script type="text/javascript" src="style/js/jquery.js"></script>
 <script type="text/javascript" src="style/js/jNice.js"></script>
+<script type="text/javascript" src="style/js/jquery.validate.js"></script>
+<script type="text/javascript" src="style/js/messages_fr.js"></script>
+<script language="javascript" type="text/javascript">
+ function supp(idU)
+ {
+     if (confirm('Voulez-vous vraiment supprimer cette ligne ?')) {
+         window.location.href = 'admin_supp.php?idU=' + idU;
+     }
+ }
+</script>
+<script>
+ $(document).ready(function() {	
+	$("#aj_compte").validate({
+		rules: {
+	    	type: {
+				required: true							
+			}
+			,login: {
+				required: true
+				,minlength: 2
+			}
+			,password: {
+				required: true
+				,minlength: 6
+			}
+			,confirm_password: {
+				required: true,
+				minlength: 6,
+				equalTo: "#password"
+			}
+			,email: {
+				required: true
+				,email: true
+			}			
+	    	,messages: {
+		    	type: "Veuillez selectionnez un type."
+		    	,login: {
+					required: "Veuillez entrer un Identifiant."
+					,minlength: "Veuillez entrer au moins 6 caractères."
+				}
+		    	,password: {
+					required: "Veuillez entrer un Mot de passe."
+					,minlength: "Veuillez entrer au moins 6 caractères."
+				}
+				,confirm_password: {
+					required: "Veuillez entrer un Confirmation de mot de passe",
+					minlength: "Veuillez entrer au moins 6 caractères.",
+					equalTo: "Le Mot de passe et la Confirmation doivent correspondre."
+				}
+		    	,email: "Veuillez entrer une adresse email valide."				
+	    	}	
+		}	
+	});
+});
+</script>
+
+
 </head>
 
 <body>
@@ -66,9 +126,19 @@ switch ($_GET["cat"]) {
                 
                 <div id="main">
                 	<form action="" class="jNice">
-					<h3> <?php if(isset($titre)) echo 'Liste des '. $titre; ?></h3>
+					<h3> <?php  if(isset($titre)) echo 'Liste des '. $titre; ?></h3>
+					<h4><?php
+
+
+session_start();
+if ($_SESSION['curPageName'] == 'admin_supp.php' && $_GET['sup'] == 1) {
+	echo ' Le compte a &eacute;t&eacute; supprim&eacute;';
+	$_SESSION['curPageName'] = curPageName();
+}
+?></h4>
                     	<table cellpadding="0" cellspacing="0">
 <?php
+
 
 $sql = 'SELECT IdUtilisateur, Login, Email' .
 ' FROM Utilisateur WHERE Type=' . $_GET["cat"];
@@ -80,7 +150,10 @@ if ($results->num_rows) {
 
 		echo '<tr>' .
 		'<td>';
-		echo $row[1] . '</td>' . '<td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>' .
+		echo $row[1] . '</td>' . '<td class="action"><a href="#" class="view">Afficher</a>' .
+		'<a href="#" class="edit">Editer</a>' .
+		'<a href="javascript:supp(' . $row[0] . ');" class="delete">Supprimer</a>' .
+		'</td>' .
 		'</tr>';
 	}
 } else {
@@ -98,20 +171,32 @@ if ($results->num_rows) {
                         </table>
                         </form>
 					<h3>Cr&eacute;er un nouveau compte</h3>
-					<h4><?php if($_GET['ok']==1) echo ' Le compte a &eacute;t&eacute; cr&eacute;&eacute;'; ?></h4>
-					<form action="admin_creer.php" method="post" class="jNice">
+					<h4><?php
+
+
+session_start();
+if ($_SESSION['curPageName'] == 'admin_creer.php' && $_GET['aj'] == 1) {
+	echo ' Le compte a &eacute;t&eacute; cr&eacute;&eacute;';
+	$_SESSION['curPageName'] = curPageName();
+}
+?></h4>
+					<form action="admin_creer.php" id="aj_compte" method="post" class="jNice">
 					
                     	<fieldset>
-                    		<p><label>Type :</label>
-                            <select name="type">
+                    		<p><label for="type">Type :</label>
+                            <select name="type" id="type">
                             	<option value="2">Mod&eacute;rateur</option>
                             	<option value="1">Administrateur</option>
-                            	 </select>
-                            </p>
-                        	<p><label>Identifiant* :</label><input type="text" name="login" class="text-long" /></p>
-                        	<p><label>Mot de passe* :</label><input type="password" name="password" class="text-long" /></p>
-                            <p><label>Email* :</label><input type="text" name="email" class="text-long" />
-                            <input type="hidden" name="curPageURL" value="<?php echo curPageURL(); ?>" class="text-long" />
+                            </select>
+                            </p>                            
+                        	<p><label for="login">Identifiant* (2 caract&egrave;res minimum) :</label>
+                        	<input type="text" name="login" id="login" class="text-long" /></p>
+                        	<p><label for="password">Mot de passe* (6 caract&egrave;res minimum) :</label>
+                        	<input type="password" name="password" id="password" class="text-long" /></p>
+                        	<p><label for="password">Confirmation de mot de passe* (6 caract&egrave;res minimum) :</label>
+                        	<input type="password" name="confirm_password" id="confirm_password" class="text-long" /></p>
+                            <p><label for="email">Email* :</label>
+                            <input type="text" name="email" id="email" class="text-long" />
                             </p>
                         	<input type="submit" value="Enregistrer" />
                         </fieldset>
