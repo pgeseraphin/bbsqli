@@ -2,6 +2,7 @@
 require_once 'db.php';
 require_once 'lib.php';
 
+//pour obtenir le lien actif (variable 'cat')
 switch ($_GET["cat"]) {
 	case 1 :
 		$titre = 'Administrateurs';
@@ -65,9 +66,9 @@ switch ($_GET["cat"]) {
                 
                 <div id="main">
                 	<form action="" class="jNice">
-					<h3>Liste des <?php echo $titre; ?></h3>
+					<h3> <?php if(isset($titre)) echo 'Liste des '. $titre; ?></h3>
                     	<table cellpadding="0" cellspacing="0">
-                    	<?php
+<?php
 
 $sql = 'SELECT IdUtilisateur, Login, Email' .
 ' FROM Utilisateur WHERE Type=' . $_GET["cat"];
@@ -79,11 +80,12 @@ if ($results->num_rows) {
 
 		echo '<tr>' .
 		'<td>';
-		echo $row[1] . '</td>'
-		//  .'<td>'; echo $row[2].'</td>'
-		 . '<td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>' .
+		echo $row[1] . '</td>' . '<td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>' .
 		'</tr>';
 	}
+} else {
+	if (isset ($titre))
+		echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
 }
 ?>                   	
 							 
@@ -96,6 +98,7 @@ if ($results->num_rows) {
                         </table>
                         </form>
 					<h3>Cr&eacute;er un nouveau compte</h3>
+					<h4><?php if($_GET['ok']==1) echo ' Le compte a &eacute;t&eacute; cr&eacute;&eacute;'; ?></h4>
 					<form action="admin_creer.php" method="post" class="jNice">
 					
                     	<fieldset>
@@ -106,9 +109,9 @@ if ($results->num_rows) {
                             	 </select>
                             </p>
                         	<p><label>Identifiant* :</label><input type="text" name="login" class="text-long" /></p>
-                        	<p><label>Mot de passe* :</label><input type="text" name="password" class="text-long" /></p>
+                        	<p><label>Mot de passe* :</label><input type="password" name="password" class="text-long" /></p>
                             <p><label>Email* :</label><input type="text" name="email" class="text-long" />
-                            <input type="hidden" name="curPage" class="text-long" />
+                            <input type="hidden" name="curPageURL" value="<?php echo curPageURL(); ?>" class="text-long" />
                             </p>
                         	<input type="submit" value="Enregistrer" />
                         </fieldset>
