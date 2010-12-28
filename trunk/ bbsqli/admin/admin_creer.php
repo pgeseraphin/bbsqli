@@ -1,16 +1,17 @@
 <?php
 require_once 'db.php';
+require_once 'lib.php';
 
-$sql = "INSERT INTO Utilisateur (Type, Login, Password, Email)" .
-		" VALUES ('$_POST[type]', '$_POST[login]','$_POST[password]', '$_POST[email]')";
+//mettre l'URL de la page courante dans la session
+session_start(); 
+$_SESSION['curPageName'] = curPageName();
 
-
-
-//$results = $conn->query($sql);
+//insertion de la ligne
+$sql = 'INSERT INTO Utilisateur (Type, Login, Password, Email)' .
+		' VALUES ("'.$_POST["type"].'", "'.$_POST["login"].'","'.$_POST["password"].'", "'.$_POST["email"].'")';
 
 if ($conn->query($sql)) {
-	$msg = 'Le compte a &eacute;t&eacute; cr&eacute&eacute;';
-	header('Location: '.$_POST['curPageURL'].'&ok=1');
+		header('Location: '.$_SESSION['curPageURL'] .'&aj=1');
 }
 else{
 	die('Error: ' . mysql_error());
