@@ -1,4 +1,5 @@
 <?php
+//Pour obtenir l'URL de la page courante
 function curPageURL() {
 	$pageURL = 'http';
 	if ($_SERVER["HTTPS"] == "on") {
@@ -12,4 +13,11 @@ function curPageURL() {
 	}
 	return $pageURL;
 }
+//fin curPageURL()
+
+//pour obtenir le nom de la page courante
+function curPageName() {
+	return substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+}
+//fin curPageName()
 ?>
