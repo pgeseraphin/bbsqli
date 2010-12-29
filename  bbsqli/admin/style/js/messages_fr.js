@@ -4,7 +4,7 @@
  */
 jQuery.extend(jQuery.validator.messages, {
         required: "Ce champ est requis.",
-        remote: "Veuillez remplir ce champ pour continuer.",
+        remote: "Cette valeur existe d&eacute;j&agrave; dans la base de donn&eacute;es.",
         email: "Veuillez entrer une adresse email valide.",
         url: "Veuillez entrer une URL valide.",
         date: "Veuillez entrer une date valide.",
