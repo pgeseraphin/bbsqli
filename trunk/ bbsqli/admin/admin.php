@@ -31,6 +31,10 @@ switch ($_GET["cat"]) {
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
+<style type="text/css">
+label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+</style>
+
 
 <!-- JavaScripts-->
 <script type="text/javascript" src="style/js/jquery.js"></script>
@@ -47,6 +51,10 @@ switch ($_GET["cat"]) {
 </script>
 <script>
  $(document).ready(function() {	
+ 	 jQuery.validator.addMethod("noSpace", function(value, element){ 
+		  return value.indexOf(" ") < 0 && value != ""; 
+	 }, "N'entrez pas d'espace dans le champ Identifiant");
+ 	
 	$("#aj_compte").validate({
 		rules: {
 	    	type: {
@@ -54,16 +62,17 @@ switch ($_GET["cat"]) {
 			}
 			,login: {
 				required: true
+				,noSpace: true
 				,minlength: 2
-			}
+			}	
 			,password: {
 				required: true
 				,minlength: 6
 			}
 			,confirm_password: {
-				required: true,
-				minlength: 6,
-				equalTo: "#password"
+				required: true
+				,minlength: 6
+				,equalTo: "#password"
 			}
 			,email: {
 				required: true
@@ -73,16 +82,16 @@ switch ($_GET["cat"]) {
 		    	type: "Veuillez selectionnez un type."
 		    	,login: {
 					required: "Veuillez entrer un Identifiant."
-					,minlength: "Veuillez entrer au moins 6 caractères."
+					,minlength: "Veuillez entrer au moins 2 caractères."					
 				}
 		    	,password: {
 					required: "Veuillez entrer un Mot de passe."
 					,minlength: "Veuillez entrer au moins 6 caractères."
 				}
 				,confirm_password: {
-					required: "Veuillez entrer un Confirmation de mot de passe",
-					minlength: "Veuillez entrer au moins 6 caractères.",
-					equalTo: "Le Mot de passe et la Confirmation doivent correspondre."
+					required: "Veuillez entrer un Confirmation de mot de passe"
+					,minlength: "Veuillez entrer au moins 6 caractères."
+					,equalTo: "Le Mot de passe et la Confirmation doivent correspondre."
 				}
 		    	,email: "Veuillez entrer une adresse email valide."				
 	    	}	
@@ -132,7 +141,7 @@ switch ($_GET["cat"]) {
 
 session_start();
 if ($_SESSION['curPageName'] == 'admin_supp.php' && $_GET['sup'] == 1) {
-	echo ' Le compte a &eacute;t&eacute; supprim&eacute;';
+	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; supprim&eacute;</span>';
 	$_SESSION['curPageName'] = curPageName();
 }
 ?></h4>
@@ -176,7 +185,7 @@ if ($results->num_rows) {
 
 session_start();
 if ($_SESSION['curPageName'] == 'admin_creer.php' && $_GET['aj'] == 1) {
-	echo ' Le compte a &eacute;t&eacute; cr&eacute;&eacute;';
+	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; cr&eacute;&eacute;</span>';
 	$_SESSION['curPageName'] = curPageName();
 }
 ?></h4>

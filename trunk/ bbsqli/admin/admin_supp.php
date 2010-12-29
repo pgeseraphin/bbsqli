@@ -13,7 +13,7 @@ if ($conn->query($sql)) {
 	header('Location: '.$_SESSION['curPageURL'].'&sup=1');
 }
 else{
-	die('Error: ' . mysql_error());
+	die('Error: ' . $conn->error);
 }
  
  

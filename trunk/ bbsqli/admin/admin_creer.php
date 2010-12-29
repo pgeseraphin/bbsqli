@@ -14,6 +14,6 @@ if ($conn->query($sql)) {
 		header('Location: '.$_SESSION['curPageURL'] .'&aj=1');
 }
 else{
-	die('Error: ' . mysql_error());
+	die('Error: ' . $conn->error);
 }
 ?>
