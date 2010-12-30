@@ -37,7 +37,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 
 
 <!-- JavaScripts-->
-<script type="text/javascript" src="style/js/jquery.js"></script>
+<script type="text/javascript" src="style/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="style/js/jNice.js"></script>
 <script type="text/javascript" src="style/js/jquery.validate.js"></script>
 <script type="text/javascript" src="style/js/messages_fr.js"></script>
@@ -64,6 +64,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 				required: true
 				,noSpace: true
 				,minlength: 2
+				,remote: "check_login.php"
 			}	
 			,password: {
 				required: true
@@ -82,7 +83,8 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 		    	type: "Veuillez selectionnez un type."
 		    	,login: {
 					required: "Veuillez entrer un Identifiant."
-					,minlength: "Veuillez entrer au moins 2 caractères."					
+					,minlength: "Veuillez entrer au moins 2 caractères."
+					,remote: "Cet Identifiant existe d&eacute;j&agrave;."					
 				}
 		    	,password: {
 					required: "Veuillez entrer un Mot de passe."
