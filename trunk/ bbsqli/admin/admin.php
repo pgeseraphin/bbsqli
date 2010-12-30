@@ -37,7 +37,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 
 
 <!-- JavaScripts-->
-<script type="text/javascript" src="style/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="style/js/jquery.js"></script>
 <script type="text/javascript" src="style/js/jNice.js"></script>
 <script type="text/javascript" src="style/js/jquery.validate.js"></script>
 <script type="text/javascript" src="style/js/messages_fr.js"></script>
