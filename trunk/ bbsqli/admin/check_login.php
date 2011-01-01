@@ -2,7 +2,6 @@
 require_once 'db.php';
 
 $request = trim(strtolower($_REQUEST['login']));
-//$request = 'test3';
 
 $valid = 'true';
 

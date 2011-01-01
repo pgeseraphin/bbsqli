@@ -1,4 +1,5 @@
 <?php
+
 //Pour obtenir l'URL de la page courante
 function curPageURL() {
 	$pageURL = 'http';
@@ -20,4 +21,20 @@ function curPageName() {
 	return substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 }
 //fin curPageName()
+
+//pour obtenir le libelle du type de l'utilisateur a partir de la valeur du type
+function labelType($type) {
+	switch ($type) {
+		case 1 :
+			return 'Administrateur';
+			break;
+		case 2 :
+			return 'Mod&eacute;rateur';
+			break;
+		case 3 :
+			return 'Utilisateur';
+			break;
+	}
+}
+//fin labelType()
 ?>

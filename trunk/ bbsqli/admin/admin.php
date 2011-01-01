@@ -1,56 +1,20 @@
-<?php
-require_once 'db.php';
-require_once 'lib.php';
-
-session_start();
-$_SESSION['curPageURL'] = curPageURL();
-
-//pour obtenir le lien actif (variable 'cat')
-switch ($_GET["cat"]) {
-	case 1 :
-		$titre = 'Administrateurs';
-		$active = 1;
-		break;
-	case 2 :
-		$titre = 'Mod&eacute;rateurs';
-		$active = 2;
-		break;
-	case 3 :
-		$titre = 'Utilisateurs';
-		$active = 3;
-		break;
-}
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Mon Blog - Administration</title>
-
-<!-- CSS -->
-<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
+<?php require_once 'admin_header.php'; ?>
 <style type="text/css">
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
 </style>
-
-
-<!-- JavaScripts-->
-<script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/jNice.js"></script>
 <script type="text/javascript" src="style/js/jquery.validate.js"></script>
 <script type="text/javascript" src="style/js/messages_fr.js"></script>
 <script language="javascript" type="text/javascript">
- function supp(idU)
- {
-     if (confirm('Voulez-vous vraiment supprimer cette ligne ?')) {
-         window.location.href = 'admin_supp.php?idU=' + idU;
-     }
- }
+function supp(idU)
+	 {
+	     if (confirm('Voulez-vous vraiment supprimer cette ligne ?')) {
+	         window.location.href = 'admin_supp.php?idU=' + idU;
+	     }
+	 }
 </script>
 <script>
- $(document).ready(function() {	
+ $(document).ready(function() {	 	 
+ 	
  	 jQuery.validator.addMethod("noSpace", function(value, element){ 
 		  return value.indexOf(" ") < 0 && value != ""; 
 	 }, "N'entrez pas d'espace dans le champ Identifiant");
@@ -101,8 +65,6 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 	});
 });
 </script>
-
-
 </head>
 
 <body>
@@ -120,17 +82,10 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
-			<div id="container">
-        		<div id="sidebar">
-                	<ul class="sideNav">
-                    	<li><a href="admin.php?cat=3" <?php if($active==3) echo " class=active"; ?>>Utilisateurs</a></li>
-                    	<li><a href="admin.php?cat=2" <?php if($active==2) echo " class=active"; ?>>Mod&eacute;rateurs</a></li>
-                    	<li><a href="admin.php?cat=1" <?php if($active==1) echo " class=active"; ?>>Administrateurs</a></li>
-                    	<li><a href="#">Mon Profil</a></li>                    	
-                    </ul>
-                    <!-- // .sideNav -->
-                </div>    
-                <!-- // #sidebar -->
+			<div id="container">	
+				<?php require_once 'admin_side.php'; ?>
+						
+        		
                 
                 <!-- h2 stays for breadcrumbs -->
                 <h2><a href="#">Administration</a> &raquo; <a href="#" class="active"><?php echo $titre; ?></a></h2>
@@ -161,8 +116,8 @@ if ($results->num_rows) {
 
 		echo '<tr>' .
 		'<td>';
-		echo $row[1] . '</td>' . '<td class="action"><a href="#" class="view">Afficher</a>' .
-		'<a href="#" class="edit">Editer</a>' .
+		echo $row[1] . '</td>' . '<td class="action"><a href="admin_aff.php?idU='.$row[0].'" class="view">Afficher</a>' .
+		'<a href="admin_edit.php?idU='.$row[0].'" class="edit">Editer</a>' .
 		'<a href="javascript:supp(' . $row[0] . ');" class="delete">Supprimer</a>' .
 		'</td>' .
 		'</tr>';
@@ -221,7 +176,8 @@ if ($_SESSION['curPageName'] == 'admin_creer.php' && $_GET['aj'] == 1) {
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Mon Blog &#169; 2010-2011</p>
+        <?php require_once 'admin_footer.php'; ?>
+       
     </div>
     <!-- // #wrapper -->
 </body>
