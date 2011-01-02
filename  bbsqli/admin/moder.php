@@ -1,16 +1,36 @@
-<?php require_once 'admin_header.php'; ?>
+<?php require_once 'moder_header.php'; ?>
 <style type="text/css">
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
 </style>
 <script type="text/javascript" src="style/js/jquery.validate.js"></script>
 <script type="text/javascript" src="style/js/messages_fr.js"></script>
 <script language="javascript" type="text/javascript">
-function supp(idU)
-	 {
-	     if (confirm('Voulez-vous vraiment supprimer cette ligne ?')) {
-	         window.location.href = 'admin_supp.php?idU=' + idU;
-	     }
-	 }
+function active_moder(id,categ)
+ {
+ 	switch(categ){
+	 	case 1:
+		     if (confirm('Voulez-vous vraiment activer cette publication ?')) {
+		         window.location.href = 'moder_active.php?t=1&c=1&id=' + id;
+		     }
+		     break;
+		 case 2:
+		     if (confirm('Voulez-vous vraiment d&eacute;sactiver cette publication ?')) {
+		         window.location.href = 'moder_active.php?t=1&c=0&id=' + id;
+		     }
+		     break;
+		 case 3:
+		     if (confirm('Voulez-vous vraiment activer ce commentaire ?')) {
+		         window.location.href = 'moder_active.php?t=2&c=1&id=' + id;
+		     }
+		     break;
+		 case 4:
+		     if (confirm('Voulez-vous vraiment d&eacute;sactiver ce commentaire ?')) {
+		         window.location.href = 'moder_active.php?t=2&c=0&id=' + id;
+		     }
+		     break;    		         
+ 	}    
+ }
+
 </script>
 <script>
  $(document).ready(function() {	 	 
@@ -83,12 +103,12 @@ function supp(idU)
         
         <div id="containerHolder">
 			<div id="container">	
-				<?php require_once 'admin_side.php'; ?>
+				<?php require_once 'moder_side.php'; ?>
 						
         		
                 
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Administration</a> &raquo; <a href="#" class="active"><?php echo $titre; ?></a></h2>
+                <h2><a href="#">Mod&eacute;ration</a> &raquo; <a href="#" class="active"><?php echo $titre; ?></a></h2>
                 
                 <div id="main">
                 	<form action="" class="jNice">
@@ -97,34 +117,58 @@ function supp(idU)
 
 
 session_start();
-if ($_SESSION['curPageName'] == 'admin_supp.php' && $_GET['sup'] == 1) {
-	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; supprim&eacute;</span>';
+if ($_SESSION['curPageName'] == 'moder_active.php' && $_GET['mod'] == 1) {
+	echo '<span style="color : #009900;">L&apos;action a &eacute;t&eacute; compl&eacute;t&eacute;e</span>';
 	$_SESSION['curPageName'] = curPageName();
 }
 ?></h4>
                     	<table cellpadding="0" cellspacing="0">
 <?php
-
-
-$sql = 'SELECT IdUtilisateur, Login, Email' .
-' FROM Utilisateur WHERE Type=' . $_GET["cat"];
-
-$results = $conn->query($sql);
-
-if ($results->num_rows) {
-	while ($row = $results->fetch_array()) {
-
-		echo '<tr>' .
-		'<td>';
-		echo $row['Login'] . '</td>' . '<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
-		'<a href="admin_edit.php?idU='.$row['IdUtilisateur'].'" class="edit">Editer</a>' .
-		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a>' .
-		'</td>' .
-		'</tr>';
+//Moderation des publications
+if($_GET["cat"]==1||$_GET["cat"]==2||$_GET["cat"]==3){	
+	$sql = 'SELECT IdBlog ,IdUtilisateur ,Titre' .
+	' FROM Blog WHERE Approuve '. $appr;
+	
+	$results = $conn->query($sql);
+	
+	if ($results->num_rows) {
+		while ($row = $results->fetch_array()) {
+	
+			echo '<tr>' .
+			'<td>';
+			echo $row['Titre'] . '</td>' . '<td class="action"><a href="moder_aff.php?c=1&id='.$row['IdBlog'].'" class="edit">Afficher</a>' .
+			'<a href="javascript:active_moder(' . $row['IdBlog'] . ' ,1);" class="view">Activer</a>' .
+			'<a href="javascript:active_moder(' . $row['IdBlog'] . ' ,2);" class="delete">D&eacute;sactiver</a>' .
+			'</td>' .
+			'</tr>';
+		}
+	} else {
+		if (isset ($titre))
+			echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
 	}
-} else {
-	if (isset ($titre))
-		echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
+}
+//Moderation des commentaires
+elseif($_GET["cat"]==4||$_GET["cat"]==5||$_GET["cat"]==6){	
+	$sql = 'SELECT cb.IdCommentaireBlog ,cb.IdBlog ,cb.IdUtilisateur ,b.Titre' .
+	' FROM CommentaireBlog cb, Blog b WHERE cb.IdBlog=b.IdBlog AND cb.Approuve '. $appr;
+	
+	$results = $conn->query($sql);
+	
+	if ($results->num_rows) {
+		while ($row = $results->fetch_array()) {
+	
+			echo '<tr>' .
+			'<td>';
+			echo $row['Titre'] . '</td>' . '<td class="action"><a href="moder_aff.php?c=1&id='.$row['IdCommentaireBlog'].'" class="edit">Afficher</a>' .
+			'<a href="javascript:active_moder(' . $row['IdBlog'] . ' ,3);" class="view">Activer</a>' .
+			'<a href="javascript:active_moder(' . $row['IdBlog'] . ' ,4);" class="delete">D&eacute;sactiver</a>' .
+			'</td>' .
+			'</tr>';
+		}
+	} else {
+		if (isset ($titre))
+			echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
+	}
 }
 ?>                   	
 							 
@@ -136,37 +180,7 @@ if ($results->num_rows) {
                             -->                      
                         </table>
                         </form>
-					<h3>Cr&eacute;er un nouveau compte</h3>
-					<h4><?php
-
-
-session_start();
-if ($_SESSION['curPageName'] == 'admin_creer.php' && $_GET['aj'] == 1) {
-	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; cr&eacute;&eacute;</span>';
-	$_SESSION['curPageName'] = curPageName();
-}
-?></h4>
-					<form action="admin_creer.php" id="aj_compte" method="post" class="jNice">
 					
-                    	<fieldset>
-                    		<p><label for="type">Type :</label>
-                            <select name="type" id="type">
-                            	<option value="2">Mod&eacute;rateur</option>
-                            	<option value="1">Administrateur</option>
-                            </select>
-                            </p>                            
-                        	<p><label for="login">Identifiant* (2 caract&egrave;res minimum) :</label>
-                        	<input type="text" name="login" id="login" class="text-long" /></p>
-                        	<p><label for="password">Mot de passe* (6 caract&egrave;res minimum) :</label>
-                        	<input type="password" name="password" id="password" class="text-long" /></p>
-                        	<p><label for="password">Confirmation de mot de passe* (6 caract&egrave;res minimum) :</label>
-                        	<input type="password" name="confirm_password" id="confirm_password" class="text-long" /></p>
-                            <p><label for="email">Email* :</label>
-                            <input type="text" name="email" id="email" class="text-long" />
-                            </p>
-                        	<input type="submit" value="Enregistrer" />
-                        </fieldset>
-                    </form>
                 </div>
                 <!-- // #main -->
                 

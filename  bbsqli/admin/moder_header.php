@@ -8,20 +8,38 @@ $_SESSION['curPageURL'] = curPageURL();
 //pour obtenir le lien actif (variable 'cat')
 switch ($_GET["cat"]) {
 	case 1 :
-		$titre = 'Administrateurs';
+		$titre = 'Publications &agrave; Mod&eacute;rer';
+		$appr = 'IS NULL';
 		$active = 1;
 		break;
 	case 2 :
-		$titre = 'Mod&eacute;rateurs';
+		$titre = 'Publications D&eacute;sactiv&eacute;es';
+		$appr = '=0';
 		$active = 2;
 		break;
 	case 3 :
-		$titre = 'Utilisateurs';
+		$titre = 'Publications Activ&eacute;es';
+		$appr = '=1';
 		$active = 3;
-		break;
+		break;	
 	case 4 :
-		$titre = 'Profil';
+		$titre = 'Commentaires &agrave; Mod&eacute;rer';
+		$appr = 'IS NULL';
 		$active = 4;
+		break;
+	case 5 :
+		$titre = 'Commentaires D&eacute;sactiv&eacute;s';
+		$appr = '=0';
+		$active = 5;
+		break;
+	case 6 :
+		$titre = 'Commentaires Activ&eacute;s';
+		$appr = '=1';
+		$active = 6;
+		break;	
+	case 7 :
+		$titre = 'Mon Profil';
+		$active = 7;
 		break;
 }
 ?>
@@ -30,7 +48,7 @@ switch ($_GET["cat"]) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="style/img/favicon.ico" rel="icon" type="image/x-icon" />
-<title>Mon Blog - Administration</title>
+<title>Mon Blog - Mod&eacute;ration</title>
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
