@@ -1,4 +1,4 @@
-<?php require_once 'admin_header.php'; ?>
+<?php require_once 'user_header.php'; ?>
 <style type="text/css">
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
 </style>
@@ -74,7 +74,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
         
         <div id="containerHolder">
 			<div id="container">	
-				<?php require_once 'admin_side.php'; ?>
+				<?php require_once 'user_side.php'; ?>
 						
         		
                 
@@ -85,8 +85,8 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
                 <h3>Modifier le compte</h3>
                 <h4><?php
 session_start();
-if ($_SESSION['curPageName'] == 'admin_mod.php' && $_GET['mod'] == 1) {
-	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; modifi&eacute;e</span>';
+if ($_SESSION['curPageName'] == 'user_profil_mod_mod.php' && $_GET['mod'] == 1) {
+	echo '<span style="color : #009900;">Votre profil a &eacute;t&eacute; modifi&eacute;</span>';
 	$_SESSION['curPageName'] = curPageName();
 }
 ?></h4>
@@ -98,7 +98,7 @@ $sql = 'SELECT IdUtilisateur ,Type	,Login ,Email' .
 ' ,TitreBlog ,Prenom ,Nom ,Sexe ,DateNaissance ,Photo' .
 ' ,Adresse ,CodePostal ,Ville ,Pays ,Telephone ,Mobile' .
 ' ,Fax ,AProposDeMoi' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $_GET["idU"];
+' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION["idU"];
 
 $results = $conn->query($sql);
 
@@ -108,7 +108,7 @@ if ($results->num_rows) {
 		echo '<table cellpadding="0" cellspacing="0"> <tr><td></td>' .
 		'<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
 		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr></table> ' .
-		'<form action="admin_mod.php" id="mod_compte" method="post" class="jNice">' .
+		'<form action="user_profil_mod.php" id="mod_compte" method="post" class="jNice">' .
 		'<fieldset>' .
 		'<input type="hidden" name="idUtilisateur" id="idUtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
 		'<p><label for="type">Type :</label>' .
@@ -183,7 +183,7 @@ if ($results->num_rows) {
         </div>	
         <!-- // #containerHolder -->
         
-        <?php require_once 'admin_footer.php'; ?>
+        <?php require_once 'user_footer.php'; ?>
        
     </div>
     <!-- // #wrapper -->
