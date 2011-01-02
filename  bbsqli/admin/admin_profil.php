@@ -27,23 +27,24 @@
                 
                 <div id="main">
                 <form action="" class="jNice">
-					<h3>Affichage des informations</h3>
+					<h3>Mon Profil</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
+session_start();
+
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' ,TitreBlog, Prenom, Nom, Sexe, DateNaissance' .
 ' ,Adresse,	CodePostal,	Ville, Pays, Telephone, Mobile' .
 ' ,Fax,	AProposDeMoi, DateCreationCompte, DerniereDateConnexion' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $_GET["idU"];
+' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION['idU'];
 
 $results = $conn->query($sql);
 
 if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
 		echo '<tr><td></td>' .
-		'<td class="action"><a href="admin_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
-		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr>';
+		'<td class="action"><a href="admin_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>';
 		echo '<tr><td>Type Utilisateur : ' . '</td>' . '<td>' . labelType($row['Type']) . '</td></tr>';
 		echo '<tr><td>Identifiant : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';
 		echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
@@ -57,7 +58,7 @@ if ($results->num_rows) {
 		echo '<tr><td>Ville : ' . '</td>' . '<td>' . $row['Ville'] . '</td></tr>';
 		echo '<tr><td>Pays : ' . '</td>' . '<td>' . $row['Pays'] . '</td></tr>';
 		echo '<tr><td>T&eacute;l Fixe : ' . '</td>' . '<td>' . $row['Telephone'] . '</td></tr>';
-		echo '<tr><td>T&eacute;l Portable : ' . '</td>' . '<td>' . $row['Portable'] . '</td></tr>';
+		echo '<tr><td>T&eacute;l Portable : ' . '</td>' . '<td>' . $row['Mobile'] . '</td></tr>';
 		echo '<tr><td>Fax : ' . '</td>' . '<td>' . $row['Fax'] . '</td></tr>';
 		echo '<tr><td>A Propos de Moi : ' . '</td>' . '<td>' . $row['AProposDeMoi'] . '</td></tr>';
 		echo '<tr><td>Date de Cr&eacute;ation du Compte : ' . '</td>' . '<td>' . $row['DateCreationCompte'] . '</td></tr>';
