@@ -112,13 +112,13 @@ $sql = 'SELECT IdUtilisateur, Login, Email' .
 $results = $conn->query($sql);
 
 if ($results->num_rows) {
-	while ($row = $results->fetch_row()) {
+	while ($row = $results->fetch_array()) {
 
 		echo '<tr>' .
 		'<td>';
-		echo $row[1] . '</td>' . '<td class="action"><a href="admin_aff.php?idU='.$row[0].'" class="view">Afficher</a>' .
-		'<a href="admin_edit.php?idU='.$row[0].'" class="edit">Editer</a>' .
-		'<a href="javascript:supp(' . $row[0] . ');" class="delete">Supprimer</a>' .
+		echo $row[1] . '</td>' . '<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
+		'<a href="admin_edit.php?idU='.$row['IdUtilisateur'].'" class="edit">Editer</a>' .
+		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a>' .
 		'</td>' .
 		'</tr>';
 	}
