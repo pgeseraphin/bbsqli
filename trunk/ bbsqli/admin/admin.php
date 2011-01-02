@@ -4,14 +4,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 </style>
 <script type="text/javascript" src="style/js/jquery.validate.js"></script>
 <script type="text/javascript" src="style/js/messages_fr.js"></script>
-<script language="javascript" type="text/javascript">
-function supp(idU)
-	 {
-	     if (confirm('Voulez-vous vraiment supprimer cette ligne ?')) {
-	         window.location.href = 'admin_supp.php?idU=' + idU;
-	     }
-	 }
-</script>
+<script type="text/javascript" src="style/js/lib.js"></script>
 <script>
  $(document).ready(function() {	 	 
  	
