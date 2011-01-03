@@ -21,10 +21,17 @@ $host = "localhost";
 $user = "root";
 $pass = "veniu/";
 $bdd = "Blog";
-//$mysqli = new mysql($host, $user, $pass, $bdd) or die(mysql_error());
-$conn = mysql_connect($host, $user, $pass);
-if(!$conn)
-	echo " ...... erreur";
-else
-	mysql_select_db($bdd);
+/*$mysqli = new mysql($host, $user, $pass, $bdd) or die(mysql_error());
+ $conn = mysql_connect($host, $user, $pass);
+ if(!$conn)
+ echo " ...... erreur";
+ else
+ mysql_select_db($bdd);*/
+$conn = new mysqli('localhost', 'root', 'veniu/', 'Blog');
+
+/* check connection */
+if (mysqli_connect_errno()) {
+	printf("Connect failed: %s\n", mysqli_connect_error());
+	exit ();
+}
 ?>
