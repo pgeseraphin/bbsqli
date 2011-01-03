@@ -43,9 +43,12 @@ require_once 'param_connexion.php';
     	<h1><a href= "index.php"><span>Mon Blog</span></a></h1>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
+        <?php 
+        include("header.php");
+        /*
         <ul id="mainNav">
       
-        	<li><a href="#" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
+        	<li><a href="#" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item -->
         	<li><a href="#">OPTION</a></li>        	     	
         	<li class="logout"><?php 
         	if(sizeof($_SESSION) == 0){
@@ -54,9 +57,10 @@ require_once 'param_connexion.php';
         	else{ 
         	echo '<a href = "deconnexion_post.php">DECONNEXION</a>';	
         	}
-            ?>
+            
             </li>
         </ul>
+*/        ?>
         <!-- // #end mainNav -->
         
         <div id="containerHolder">

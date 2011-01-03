@@ -23,11 +23,9 @@
     	<h1><a href="#"><span>Mon Blog</span></a></h1>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
-        <ul id="mainNav">
-        	<li><a href= "index.php" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
-        	<li><a href="#">OPTION</a></li>        	     	
-        	<li class="logout"><a href="#">DECONNEXION</a></li>
-        </ul>
+       <?php
+       include("header.php");
+       ?>
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
