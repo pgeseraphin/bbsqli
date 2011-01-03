@@ -48,9 +48,12 @@ require_once 'param_connexion.php';
         	<li><a href="#" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
         	<li><a href="#">OPTION</a></li>        	     	
         	<li class="logout"><?php 
-        	if(isset($SESSION[user_id])){
-        	echo '<a href = "">DECONNEXION</a>';}
-        	else{ echo '<a href = "connexion.php">CONNEXION</a>';}
+        	if(sizeof($_SESSION) == 0){
+        	echo '<a href = "connexion.php">CONNEXION</a>';	
+        	}
+        	else{ 
+        	echo '<a href = "deconnexion_post.php">DECONNEXION</a>';	
+        	}
             ?>
             </li>
         </ul>
@@ -59,8 +62,7 @@ require_once 'param_connexion.php';
         <div id="containerHolder">
 			<div id="container">
         		<div id="sidebar">
-                	<ul class="sideNav">
-                	
+                	<ul class="sideNav">                	    
                     	<li><a href="#">Céer un blog</a></li>                    	
                     	<li><a href="#">Archives</a></li>
                     	<li><a href="#">Mon profil</a></li>
@@ -71,9 +73,7 @@ require_once 'param_connexion.php';
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->
-                <!--h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2-->
-                <h2> Bienvenu <?php $_SESSION['user_login'] ?></h2>
-                
+                <!--h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2-->                               
                 <div id="main">
                 	<form action="" class="jNice">
 					<h3>Les derniers blogs</h3>
