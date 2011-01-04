@@ -1,5 +1,4 @@
 <?php
-
 //Pour obtenir l'URL de la page courante
 function curPageURL() {
 	$pageURL = 'http';

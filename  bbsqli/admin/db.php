@@ -7,7 +7,8 @@
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
 
-$conn = new mysqli('localhost', 'root', 'veniu/', 'Blog');
+//$conn = new mysqli('localhost', 'root', 'veniu/', 'Blog');
+$conn = new mysqli('localhost', 'root', 'tololo', 'Blog');
 
 /* check connection */
 if (mysqli_connect_errno()) {
