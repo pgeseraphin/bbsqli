@@ -37,7 +37,7 @@ $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' ,TitreBlog, Prenom, Nom, Sexe, DateNaissance' .
 ' ,Adresse,	CodePostal,	Ville, Pays, Telephone, Mobile' .
 ' ,Fax,	AProposDeMoi, DateCreationCompte, DerniereDateConnexion' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION['idU'];
+' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION['user_id'];
 
 $results = $conn->query($sql);
 
