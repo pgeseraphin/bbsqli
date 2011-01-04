@@ -14,7 +14,68 @@
 		<title>Page d'inscription</title>		
 		<link href="lib/template/style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
 	    <script type="text/javascript" src="lib/template/style/js/jquery.js"></script>
+	    <script type="text/javascript" src="lib/template/style/js/jquery.validate.js"></script>
         <script type="text/javascript" src="lib/template/style/js/jNice.js"></script>   
+	    <script type="text/javascript" src="lib/template/style/js/messages_fr.js"></script>
+	    <style type="text/css">
+        label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+        </style>
+	    <script>
+ $(document).ready(function() {	 	 
+ 	 	
+	$("#signupform").validate({
+		rules: {
+			nom:{
+				required: true
+			},
+			prenom:{
+				required: true
+			},
+			login: {
+				required: true,
+				minlength: 2,
+				remote: "verif_login.php"
+			},	
+			mot_de_passe: {
+				required: true,
+				minlength: 6
+			},
+			confirmation_mdp: {
+				required: true,
+				minlength: 6,
+				equalTo: "#mot_de_passe"
+			},
+			titre_blog: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+				remote: "verif_email.php"
+			},			
+	    	messages: {
+		    	nom: "Entrer votre nom",
+		    	prenom: "entrer votre prenom",
+		    	login: {
+					required: "Entrer votre pseudo",
+					minlength: "Veuillez entrer au moins 2 caractères.",
+					remote: "Cet Identifiant existe d&eacute;j&agrave;."					
+				},
+		    	mot_de_passe: {
+					required: "Veuillez entrer un Mot de passe.",
+					minlength: "Veuillez entrer au moins 6 caractères."
+				},
+				confirmation_mdp: {
+					required: "Veuillez entrer un Confirmation de mot de passe",
+					minlength: "Veuillez entrer au moins 6 caractères.",
+					equalTo: "Le Mot de passe et la Confirmation doivent correspondre."
+				},
+		    	email: "Veuillez entrer une adresse email valide."				
+	    	}	
+		}	
+	});
+});
+</script>
 	</head>
 <body>
 
@@ -32,7 +93,7 @@
 			<div id="container">
         		<div id="sidebar">
                 	<ul class="sideNav">
-                	
+                	    <li><a href="inscription.php">S'inscrire</a></li>
                     	<li><a href="#">Céer un blog</a></li>                    	
                     	<li><a href="#">Archives</a></li>
                     	<li><a href="#">Mon profil</a></li>
@@ -46,8 +107,8 @@
                 <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
                 
                 <div id="main">
-                <form action="inscription_post.php" methode="post" class="jNice">
-                	<h3>Another section</h3>
+                <form action="inscription_post.php" id="signupform" methode="post" class="jNice">
+                	<h3>renseigner les champs obligatoires</h3>
                     	<fieldset>
                         	<p><label>Nom*:</label><input type="text" name="nom" class="text-long" /></p>
                         	<p><label>Prénom*:</label><input type="text" name="prenom" class="text-long" /></p>
@@ -59,6 +120,7 @@
                         	<p><label>Téléphone mobile:</label><input type="text" name="mobile" class="text-long" /></p>
                         	<p><label>Téléphone fixe:</label><input type="text" name="tel_fixe" class="text-long" /></p>
                         	<p><label>Fax:</label><input type="text" name="fax" class="text-long" /></p>
+                        	<p><label>Date de naissance:</label><input type="text" name="dete_de_naissance" class="text-long" /></p>
                         	<p><label>Adresse:</label><input type="text" name="adresse" class="text-long" /></p>
                         	<p><label>Code postal, ville et Pays:</label>
                         	<input type="text" name="code_postal" class="text-small" /><input type="text" name="ville" class="text-small" /><input type="text" name="pays" class="text-medium" /></p>
@@ -83,53 +145,10 @@
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Mon Blog &#169; 2010-2011</p>
+        <?php require_once 'footer.php'; ?>
     </div>
     <!-- // #wrapper -->
 
  	
 </body>
-
-<!--
-
-<br>
-<br>
-
-<form action="inscription_post.php" methode = "post">
-Nom<br> 
-<input type="text" name="nom" /><br>
-Prénom<br> 
-<input type="text" name="prenom" /><br>
-Login<br> 
-<input type="text" name="login" /><br>
-Mot de passe<br>
-<input type="password" name="mot_de_passe" /><br>
-Conformer le mot de passe<br> 
-<input type="password" name="confirmation_mdp" /><br>
-titre de votre blog<br> 
-<input type="text" name="titre_blog" /><br>
-Email<br> 
-<input type="text" name="email" /><br>
-Télephone mobile<br>
-<input type="text" name="tel_mobile" /><br>
-Télephone fixe<br>
-<input type="text" name="telephone_fixe" /><br>
-Fax<br>
-<input type="text" name="fax" /><br>
-Adresse<br>
-<input type="text" name="adresse" /><br>
-Code postal<br>
-<input type="text" name="code_postal" /><br>
-Ville<br>
-<input type="text" name="ville" /><br>
-Pays<br>
-<input type="text" name="pays" /><br>
-<input type="radio" name="masculin" /><br>
-<input type="radio" name="feminin" /><br>
-A propos de moi:<br>
-<textarea name="description" rows="8" cols="45" > Mettez votre text ici</textarea><br>
-
-<input type="submit" value="Enregistrer" />
-</form>
--->
 </html>
