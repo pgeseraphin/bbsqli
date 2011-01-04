@@ -37,15 +37,14 @@ $sql = 'SELECT IdUtilisateur ,Type	,Login ,Email' .
 ' ,TitreBlog ,Prenom ,Nom ,Sexe ,DateNaissance' .
 ' ,Adresse	,CodePostal	,Ville ,Pays ,Telephone ,Mobile' .
 ' ,Fax ,AProposDeMoi' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION['idU'];
+' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION['user_id'];
 
 $results = $conn->query($sql);
 
 if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
 		echo '<tr><td></td>' .
-		'<td class="action"><a href="admin_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>';
-		echo '<tr><td>Type Utilisateur : ' . '</td>' . '<td>' . labelType($row['Type']) . '</td></tr>';
+		'<td class="action"><a href="user_profil_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>';
 		echo '<tr><td>Identifiant : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';
 		echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
 		echo '<tr><td>Titre Blog : ' . '</td>' . '<td>' . $row['TitreBlog'] . '</td></tr>';

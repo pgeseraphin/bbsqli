@@ -7,7 +7,7 @@ session_start();
 $_SESSION['curPageName'] = curPageName();
 
 //modification des donnees
-$sql = 'UPDATE Utilisateur SET Type="'.$_POST["idUtilisateur"].'" , Login="'.$_POST["login"].'" , Password="'.$_POST["password"].'"' .
+$sql = 'UPDATE Utilisateur SET Password="'.$_POST["password"].'"' .
 		' ,Email="'.$_POST["email"].'" ,TitreBlog="'.$_POST["titreBlog"].'" ,Prenom="'.$_POST["prenom"].'"' .
 		' ,Nom="'.$_POST["nom"].'" ,Sexe="'.$_POST["sexe"].'" 	' .
 		' ,DateNaissance="'.$_POST["dateNaiss"].'" ,Adresse="'.$_POST["adresse"].'"' .

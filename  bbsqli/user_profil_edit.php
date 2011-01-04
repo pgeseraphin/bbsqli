@@ -65,7 +65,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <ul id="mainNav">
-        	<li><a href="../index.php" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
+        	<li><a href="index.php" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
         	<li><a href="#">ADMINISTRATION</a></li>
         	<li><a href="#">OPTION</a></li>
         	<li class="logout"><a href="#">DECONNEXION</a></li>
@@ -98,7 +98,7 @@ $sql = 'SELECT IdUtilisateur ,Type	,Login ,Email' .
 ' ,TitreBlog ,Prenom ,Nom ,Sexe ,DateNaissance ,Photo' .
 ' ,Adresse ,CodePostal ,Ville ,Pays ,Telephone ,Mobile' .
 ' ,Fax ,AProposDeMoi' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION["idU"];
+' FROM Utilisateur WHERE IdUtilisateur=' . $_SESSION['user_id'];
 
 $results = $conn->query($sql);
 
@@ -106,19 +106,11 @@ if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
 
 		echo '<table cellpadding="0" cellspacing="0"> <tr><td></td>' .
-		'<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
-		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr></table> ' .
+		'<td class="action"><a href="user_profil.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
+		'</td></tr></table> ' .
 		'<form action="user_profil_mod.php" id="mod_compte" method="post" class="jNice">' .
 		'<fieldset>' .
 		'<input type="hidden" name="idUtilisateur" id="idUtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
-		'<p><label for="type">Type :</label>' .
-		'<select name="type" id="type">' .
-		'<option value="3" ' . (($row['Type'] == 3) ? "selected='selected'" : "") . '>Utilisateur</option>' .
-		'<option value="2" ' . (($row['Type'] == 2) ? "selected='selected'" : "") . '>Mod&eacute;rateur</option>' .
-		'<option value="1" ' . (($row['Type'] == 1) ? "selected='selected'" : "") . '>Administrateur</option>' .
-		'</select></p>' .
-		'<p><label for="login">Identifiant * (2 caract&egrave;res minimum) :</label>' .
-		'<input type="text" name="login" id="login" class="text-long" value="' . $row['Login'] . '" /></p>' .
 		'<p><label for="password">Mot de passe (6 caract&egrave;res minimum) :</label>' .
 		'<input type="password" name="password" id="password" class="text-long" /></p>' .
 		'<p><label for="password">Confirmation de mot de passe (6 caract&egrave;res minimum) :</label>' .
