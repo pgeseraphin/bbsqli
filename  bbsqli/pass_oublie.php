@@ -52,7 +52,7 @@
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Mon Blog &#169; 2010-2011</p>
+         <?php require_once 'footer.php'; ?>
     </div>
     <!-- // #wrapper -->
 

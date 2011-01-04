@@ -66,7 +66,8 @@ require_once 'param_connexion.php';
         <div id="containerHolder">
 			<div id="container">
         		<div id="sidebar">
-                	<ul class="sideNav">                	    
+                	<ul class="sideNav">
+                	    <li><a href="inscription.php">S'inscrire</a></li>                	    
                     	<li><a href="#">Céer un blog</a></li>                    	
                     	<li><a href="#">Archives</a></li>
                     	<li><a href="#">Mon profil</a></li>
@@ -78,6 +79,7 @@ require_once 'param_connexion.php';
                 
                 <!-- h2 stays for breadcrumbs -->
                 <!--h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2-->                               
+               
                 <div id="main">
                 	<form action="" class="jNice">
 					<h3>Les derniers blogs</h3>
@@ -109,7 +111,7 @@ $reponse->close();
         </div>	
         <!-- // #containerHolder -->
         
-        <p id="footer">Mon Blog &#169; 2010-2011</p>
+       <?php require_once 'footer.php'; ?>
     </div>
     <!-- // #wrapper -->
 		
