@@ -81,7 +81,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
                 <h3>Modifier le compte</h3>
                 <h4><?php
 session_start();
-if ($_SESSION['curPageName'] == 'user_profil_mod_mod.php' && $_GET['mod'] == 1) {
+if ($_SESSION['curPageName'] == 'user_profil_mod.php' && $_GET['mod'] == 1) {
 	echo '<span style="color : #009900;">Votre profil a &eacute;t&eacute; modifi&eacute;</span>';
 	$_SESSION['curPageName'] = curPageName();
 }

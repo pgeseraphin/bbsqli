@@ -13,9 +13,12 @@ switch ($_GET["cat"]) {
 		$active = 1;
 		break;
 	case 2 :
-		$titre = 'Modifier mon profil';
+		$titre = 'Ajouter une Publication';
 		$active = 2;
-		break;	
+		break;
+	case 3 :
+		$titre = 'Modifier mon profil';
+		$active = 3;
+		break;
 }
 ?>
-
