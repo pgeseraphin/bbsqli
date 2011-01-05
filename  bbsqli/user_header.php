@@ -1,4 +1,5 @@
 <?php
+require_once 'auth_user.php';
 require_once 'param_connexion.php';
 require_once 'admin/lib.php';
 

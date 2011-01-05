@@ -7,7 +7,7 @@
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
     	<h1><a href="#"><span>Mon Blog</span></a></h1>
         
-         <?php require_once '../navigation.php'; ?>
+         <?php require_once 'admin_nav.php'; ?>
         
         <div id="containerHolder">
 			<div id="container">	
