@@ -14,8 +14,7 @@ require_once 'header.php';
   
         <div id="containerHolder">
 			<div id="container">	
-				<?php require_once 'user_side.php'; ?>
-						
+				<?php require_once 'user_side.php'; ?>			
         		
                 
                 <!-- h2 stays for breadcrumbs -->
