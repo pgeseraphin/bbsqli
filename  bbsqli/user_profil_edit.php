@@ -5,9 +5,8 @@ require_once 'header.php';
 <style type="text/css">
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
 </style>
-<script type="text/javascript" src="style/js/jquery.validate.js"></script>
-<script type="text/javascript" src="style/js/messages_fr.js"></script>
-<script type="text/javascript" src="style/js/lib.js"></script>
+<script type="text/javascript" src="lib/template/style/js/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/template/style/js/messages_fr.js"></script>
 <script>
  $(document).ready(function() {	 	 
  	
@@ -15,42 +14,43 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 		  return value.indexOf(" ") < 0 && value != ""; 
 	 }, "N'entrez pas d'espace dans le champ Identifiant");
  	
-	$("#mod_compte").validate({
+	$("#user_mod_compte").validate({
 		rules: {
-	    	type: {
-				required: true							
-			}
-			,login: {
-				required: true
-				,noSpace: true
-				,minlength: 2
-				,remote: "check_login.php"
-			}	
-			,password: {
-				required: true
-				,minlength: 6
+	    	password: {
+				minlength: function(element) {
+	  				if($("#password").val() != ""){
+						return '6';
+					}
+				}
 			}
 			,confirm_password: {
-				required: true
-				,minlength: 6
-				,equalTo: "#password"
+				required: function(element) {
+	      			return $("#password").val() != ""
+	      		}
+				,minlength: function(element) {
+	  				if($("#password").val() != ""){
+						return '6';
+					}
+	      		}
+				,equalTo: function(element) {
+	  				if($("#password").val() != ""){
+						return '#password';
+					}else{
+						$("#confirm_password").rules("remove", "equalTo");
+
+					}				
+	      		}
 			}
 			,email: {
 				required: true
 				,email: true
 			}			
 	    	,messages: {
-		    	type: "Veuillez selectionnez un type."
-		    	,login: {
-					required: "Veuillez entrer un Identifiant."
-					,minlength: "Veuillez entrer au moins 2 caractères."
-					,remote: "Cet Identifiant existe d&eacute;j&agrave;."					
-				}
-		    	,password: {
-					,minlength: "Veuillez entrer au moins 6 caractères."
+		    	password: {
+					minlength: "Veuillez entrer au moins 6 caractères."
 				}
 				,confirm_password: {
-					,minlength: "Veuillez entrer au moins 6 caractères."
+					minlength: "Veuillez entrer au moins 6 caractères."
 					,equalTo: "Le Mot de passe et la Confirmation doivent correspondre."
 				}
 		    	,email: "Veuillez entrer une adresse email valide."				
@@ -104,7 +104,7 @@ if ($results->num_rows) {
 		echo '<table cellpadding="0" cellspacing="0"> <tr><td></td>' .
 		'<td class="action"><a href="user_profil.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
 		'</td></tr></table> ' .
-		'<form action="user_profil_mod.php" id="mod_compte" method="post" class="jNice">' .
+		'<form action="user_profil_mod.php" id="user_mod_compte" method="post" class="jNice">' .
 		'<fieldset>' .
 		'<input type="hidden" name="idUtilisateur" id="idUtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
 		'<p><label for="password">Mot de passe (6 caract&egrave;res minimum) :</label>' .

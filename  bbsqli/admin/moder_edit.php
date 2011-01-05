@@ -1,4 +1,4 @@
-<?php require_once 'admin_header.php'; ?>
+<?php require_once 'moder_header.php'; ?>
 <style type="text/css">
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
 </style>
@@ -21,7 +21,6 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 				required: true
 				,noSpace: true
 				,minlength: 2
-				,remote: "check_login.php"
 			}	
 			,password: {
 				minlength: function(element) {
@@ -32,9 +31,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 			}
 			,confirm_password: {
 				required: function(element) {
-	      			if($("#password").val() != ""){
-	      				return 'true';
-	      			}
+	      			return $("#password").val() != ""
 	      		}
 				,minlength: function(element) {
 	  				if($("#password").val() != ""){
@@ -43,8 +40,11 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 	      		}
 				,equalTo: function(element) {
 	  				if($("#password").val() != ""){
-						return "#password";
-					}
+						return '#password';
+					}else{
+						$("#confirm_password").rules("remove", "equalTo");
+
+					}				
 	      		}
 			}
 			,email: {
@@ -82,7 +82,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
         
         <div id="containerHolder">
 			<div id="container">	
-				<?php require_once 'admin_side.php'; ?>
+				<?php require_once 'moder_side.php'; ?>
 						
         		
                 
@@ -93,7 +93,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
                 <h3>Modifier le compte</h3>
                 <h4><?php
 session_start();
-if ($_SESSION['curPageName'] == 'admin_mod.php' && $_GET['mod'] == 1) {
+if ($_SESSION['curPageName'] == 'moder_mod.php' && $_GET['mod'] == 1) {
 	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; modifi&eacute;e</span>';
 	$_SESSION['curPageName'] = curPageName();
 }
@@ -116,7 +116,7 @@ if ($results->num_rows) {
 		echo '<table cellpadding="0" cellspacing="0"> <tr><td></td>' .
 		'<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
 		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr></table> ' .
-		'<form action="admin_mod.php" id="mod_compte" method="post" class="jNice">' .
+		'<form action="moder_mod.php" id="mod_compte" method="post" class="jNice">' .
 		'<fieldset>' .
 		'<input type="hidden" name="idUtilisateur" id="idUtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
 		'<p><label for="type">Type :</label>' .
