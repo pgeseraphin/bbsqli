@@ -44,7 +44,7 @@ require_once 'param_connexion.php';
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <?php 
-        include("header.php");
+        include("navigation.php");
         /*
         <ul id="mainNav">
       
