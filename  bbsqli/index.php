@@ -7,34 +7,10 @@
  */
 session_start(); 
 require_once 'param_connexion.php';
-
+require_once 'header.php';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Mon Blog</title>
-<!-- CSS -->
-<link href="lib/template/style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
 
-<!-- JavaScripts-->
-<script type="text/javascript" src="lib/template/style/js/jquery.js"></script>
-<script type="text/javascript" src="lib/template/style/js/jNice.js"></script> 
-<!--form action="connexion.php" method="post">
-			<p>
-			<label>Login:</label>  
-			<input type="text" name="login" />
-			<label>mot de passe:</label>
-			<input type="password" name="mot_de_passe" />
-			<input type="submit" value="Valider" />
-			<a href= "inscription.php">ou s'inscrire</a><br/>
-			<a href= "pass_oublie.php">mot de passe oublie? </a>
-			
-			</p>
-		</form-->
-	</head>
+</head>
 	
 <body>
 
