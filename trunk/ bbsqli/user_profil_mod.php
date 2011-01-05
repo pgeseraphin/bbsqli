@@ -7,7 +7,7 @@ session_start();
 $_SESSION['curPageName'] = curPageName();
 
 //modification des donnees
-$sql = 'UPDATE Utilisateur SET Password="'.$_POST["password"].'"' .
+$sql = 'UPDATE Utilisateur SET Password=' . (empty ($_POST["password"]) ? 'Password' : '"' . $_POST["password"] . '"') .
 		' ,Email="'.$_POST["email"].'" ,TitreBlog="'.$_POST["titreBlog"].'" ,Prenom="'.$_POST["prenom"].'"' .
 		' ,Nom="'.$_POST["nom"].'" ,Sexe="'.$_POST["sexe"].'" 	' .
 		' ,DateNaissance="'.$_POST["dateNaiss"].'" ,Adresse="'.$_POST["adresse"].'"' .
@@ -18,7 +18,11 @@ $sql = 'UPDATE Utilisateur SET Password="'.$_POST["password"].'"' .
 		' WHERE IdUtilisateur='.$_POST["idUtilisateur"];
 
 if ($conn->query($sql)) {
-		header('Location: '.$_SESSION['curPageURL'] .'&mod=1');
+	if (strpos($_SESSION['curPageURL'], '?')) {
+		header('Location: ' . $_SESSION['curPageURL'] . '&mod=1');
+	} else {
+		header('Location: ' . $_SESSION['curPageURL'] . '?mod=1');
+	}
 }
 else{
 	die('Error: ' . $conn->error);

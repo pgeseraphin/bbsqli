@@ -30,7 +30,7 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 			,confirm_password: {
 				required: true
 				,minlength: 6
-				,equalTo: "#password"
+      			,equalTo: "#password"
 			}
 			,email: {
 				required: true
@@ -80,8 +80,6 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
                 	<form action="" class="jNice">
 					<h3> <?php  if(isset($titre)) echo 'Liste des '. $titre; ?></h3>
 					<h4><?php
-
-
 session_start();
 if ($_SESSION['curPageName'] == 'admin_supp.php' && $_GET['sup'] == 1) {
 	echo '<span style="color : #009900;">Le compte a &eacute;t&eacute; supprim&eacute;</span>';
@@ -102,8 +100,8 @@ if ($results->num_rows) {
 
 		echo '<tr>' .
 		'<td>';
-		echo $row['Login'] . '</td>' . '<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
-		'<a href="admin_edit.php?idU='.$row['IdUtilisateur'].'" class="edit">Editer</a>' .
+		echo $row['Login'] . '</td>' . '<td class="action"><a href="admin_aff.php?idU=' . $row['IdUtilisateur'] . '" class="view">Afficher</a>' .
+		'<a href="admin_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
 		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a>' .
 		'</td>' .
 		'</tr>';
