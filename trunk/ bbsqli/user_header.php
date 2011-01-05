@@ -1,5 +1,5 @@
 <?php
-require_once 'admin/db.php';
+require_once 'param_connexion.php';
 require_once 'admin/lib.php';
 
 session_start();
