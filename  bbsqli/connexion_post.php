@@ -37,7 +37,7 @@ else
 		//$_SESSION['login'] = 'DIALLO';
 		//echo $_SESSION['user_login'] . $_SESSION['user_id']; 
 		//print(" connexion reussie : $obj->Email . $_SESSION['Nom']");
-		header('Location: index.php');		
+		header('Location: user_profil.php');		
 	}
 	else {
 		

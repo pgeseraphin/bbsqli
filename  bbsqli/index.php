@@ -46,7 +46,7 @@ require_once 'header.php';
                 	    <li><a href="inscription.php">S'inscrire</a></li>                	    
                     	<li><a href="#">Céer un blog</a></li>                    	
                     	<li><a href="#">Archives</a></li>
-                    	<li><a href="#">Mon profil</a></li>
+                    	<li><a href="user_profil.php">Mon profil</a></li>
                     	
                     </ul>
                     <!-- // .sideNav -->
