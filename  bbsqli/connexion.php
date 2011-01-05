@@ -57,9 +57,7 @@
         
         <?php require_once 'footer.php'; ?>
     </div>
-    <!-- // #wrapper -->
-
- 	
+    <!-- // #wrapper --> 	
 </body>
 </html>
 
