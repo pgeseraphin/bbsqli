@@ -33,6 +33,7 @@ else
 		$obj= $resultat->fetch_object();		
 		$_SESSION['user_id']= $obj->IdUtilisateur;
 		$_SESSION['user_login']= $obj->Login;
+		$_SESSION['user_type']= $obj->Type;
 		//$_SESSION['login'] = 'DIALLO';
 		//echo $_SESSION['user_login'] . $_SESSION['user_id']; 
 		//print(" connexion reussie : $obj->Email . $_SESSION['Nom']");
