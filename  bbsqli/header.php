@@ -1,39 +1,16 @@
-<?php
-/*
- * Created on 3 janv. 2011
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
- echo '<ul id="mainNav">
-      
-        	<li><a href= "index.php" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  -->
-        	<li><a href="#">OPTION</a></li>        	     	
-        	<li class="logout">';
-        	if(sizeof($_SESSION) == 0){
-        	echo '<a href = "connexion.php">CONNEXION</a>';	
-        	}
-        	else{ 
-        	echo '<a href = "deconnexion_post.php">DECONNEXION</a>';	
-        	}
-            echo '</li></ul>';
-            /*
-              <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
-        <!--
-        <ul id="mainNav">
-      
-        	<li><a href="#" class="active">ACCUEIL</a></li> <!-- Use the "active" class for the active menu item  >
-        	<li><a href="#">OPTION</a></li>        	     	
-        	<li class="logout"><?php /*
-        	if(sizeof($_SESSION) == 0){
-        	echo '<a href = "connexion.php">CONNEXION</a>';	
-        	}
-        	else{ 
-        	echo '<a href = "deconnexion_post.php">DECONNEXION</a>';	
-        	}
-            ?>
-            </li>
-        </ul>
-        <!-- // #end mainNav -->
-        */
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="admin/style/img/favicon.ico" rel="icon" type="image/x-icon" />
+<title>Mon Blog - Profil</title>
+
+<!-- CSS -->
+<link href="admin/style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="admin/style/css/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="admin/style/css/ie7.css" /><![endif]-->
+
+
+<!-- JavaScripts-->
+<script type="text/javascript" src="admin/style/js/jquery.js"></script>
+<script type="text/javascript" src="admin/style/js/jNice.js"></script>

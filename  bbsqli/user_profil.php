@@ -1,4 +1,7 @@
-<?php require_once 'user_header.php'; ?>
+<?php 
+require_once 'user_header.php';
+require_once 'header.php'; 
+?>
 <script type="text/javascript" src="admin/style/js/lib.js"></script>
 </head>
 

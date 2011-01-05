@@ -1,4 +1,7 @@
-<?php require_once 'user_header.php'; ?>
+<?php 
+require_once 'user_header.php';
+require_once 'header.php'; 
+?>
 <style type="text/css">
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
 </style>
