@@ -1,25 +1,28 @@
 <?php
+
 /*
  * Created on 4 janv. 2011
  *
  * To change the template for this generated file go to
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
- 
- require_once 'param_connexion.php';
 
-$request = $_REQUEST['email'];
+require_once 'param_connexion.php';
+
+$request = trim(strtolower($_REQUEST['email']));
 
 $valid = 'true';
 
-$sql = "SELECT Email FROM Utilisateur WHERE Email = '$request'";
+$sql = "SELECT COUNT(Email) AS Nombre FROM Utilisateur WHERE TRIM(LOWER(Email)) = '$request'";
 
-if($results = $conn->query($sql)){
-	
-	if ($results->num_rows > 0) 
+$results = $conn->query($sql);
+
+if ($results->num_rows) {
+	$row = $results->fetch_array();
+	if ($row['Nombre'] > 0) {
 		$valid = 'false';
-	
-}else {
+	}
+} else {
 	die('Error: ' . $conn->error);
 }
 

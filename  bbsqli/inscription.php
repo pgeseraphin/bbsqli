@@ -32,11 +32,11 @@ require_once 'header.php';
 			},	
 			mot_de_passe: {
 				required: true,
-				minlength: 6
+				minlength: 4
 			},
 			confirmation_mdp: {
 				required: true,
-				minlength: 6,
+				minlength: 4,
 				equalTo: "#mot_de_passe"
 			},
 			titre_blog: {
@@ -44,7 +44,7 @@ require_once 'header.php';
 			},
 			email: {
 				required: true,
-				email: true
+				email: true,
 				remote: "verif_email.php"
 			},			
 	    	messages: {
@@ -107,8 +107,8 @@ require_once 'header.php';
                         	<p><label>Nom*:</label><input type="text" name="nom" class="text-long" /></p>
                         	<p><label>Prénom*:</label><input type="text" name="prenom" class="text-long" /></p>
                         	<p><label>Login*:</label><input type="text" name="login" class="text-long" /></p>
-                        	<p><label>Mot de passe*:</label><input type="password" name="mot_de_passe" class="text-long" /></p>
-                        	<p><label>confirmez le mot de passe*:</label><input type="password" name="confirmation_mdp" class="text-long" /></p>
+                        	<p><label>Mot de passe*:</label><input type="password" name="mot_de_passe" id="mot_de_passe" class="text-long" /></p>
+                        	<p><label>confirmez le mot de passe*:</label><input type="password" name="confirmation_mdp" id="confirmation_mdp" class="text-long" /></p>
                         	<p><label>Titre de votre blog*:</label><input type="text" name="titre_blog" class="text-long" /></p>
                         	<p><label>Email*:</label><input type="text" name="email" class="text-long" /></p>
                         	<p><label>Téléphone mobile:</label><input type="text" name="mobile" class="text-long" /></p>
