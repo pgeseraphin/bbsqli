@@ -1,20 +1,14 @@
 <?php
+
 /*
  * Created on Dec 15, 2010
  *
  * To change the template for this generated file go to
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
+require_once 'header.php';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-	<head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Mot de passe oublie</title>		
-		<link href="lib/template/style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-	    <script type="text/javascript" src="lib/template/style/js/jquery.js"></script>
-        <script type="text/javascript" src="lib/template/style/js/jNice.js"></script>   
-	</head>
+</head>
 <body>
 
 <div id="wrapper">
@@ -23,8 +17,9 @@
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <?php
-        include("navigation.php");
-        ?>
+
+include ("navigation.php");
+?>
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
