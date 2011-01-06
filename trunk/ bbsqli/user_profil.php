@@ -21,7 +21,8 @@ require_once 'header.php';
                 <h2><a href="#">Administration</a></h2>
                 
                 <div id="main">
-                <form action="" class="jNice">
+                <form action="" class="jNice">					
+					<h3>Bienvenue <?php echo ' '.$_SESSION['user_login'] ?></h3>
 					<h3>Mon Profil</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
