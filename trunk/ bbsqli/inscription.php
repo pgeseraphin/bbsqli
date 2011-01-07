@@ -85,24 +85,16 @@ require_once 'header.php';
         
         <div id="containerHolder">
 			<div id="container">
-        		<div id="sidebar">
-                	<ul class="sideNav">
-                	    <li><a href="inscription.php">S'inscrire</a></li>
-                    	<li><a href="#">Céer un blog</a></li>                    	
-                    	<li><a href="#">Archives</a></li>
-                    	<li><a href="#">Mon profil</a></li>
-                    	
-                    </ul>
-                    <!-- // .sideNav -->
-                </div>    
+        		<?php
+        		require_once 'menu.php';
+        		?>
                 <!-- // #sidebar -->
                 
-                <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
+                <!-- h2 stays for breadcrumbs -->                
                 
                 <div id="main">
                 <form action="inscription_post.php" id="signupform" methode="post" class="jNice">
-                	<h3>renseigner les champs obligatoires</h3>
+                	<h3>Renseigner les champs obligatoires</h3>
                     	<fieldset>
                         	<p><label>Nom*:</label><input type="text" name="nom" class="text-long" /></p>
                         	<p><label>Prénom*:</label><input type="text" name="prenom" class="text-long" /></p>
