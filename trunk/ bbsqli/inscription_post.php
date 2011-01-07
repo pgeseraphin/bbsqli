@@ -19,7 +19,7 @@ if(empty($_REQUEST['nom']) || empty($_REQUEST['prenom']) ||
 	//die("ERREUR : les champs obligatoires doivent être remplis.");
 }
 
-$sql = "INSERT INTO Utilisateur(Login, Password, Email, TitreBlog, Prenom, Nom, Adresse, CodePostal, Ville, Pays, Telephone, Mobile, Fax, AproposDeMoi) VALUES (' ".$_REQUEST['login']."', ' ".$_REQUEST['mot_de_passe']."', ' ".$_REQUEST['email']."', ' ".$_REQUEST['titre_blog']."', ' ".$_REQUEST['prenom']."', ' ".$_REQUEST['nom']."', ' ".$_REQUEST['adresse']."', ' ".$_REQUEST['code_postal']."', ' ".$_REQUEST['ville']."', ' ".$_REQUEST['pays']."', ' ".$_REQUEST['tel_fixe']."', ' ".$_REQUEST['mobile']."', ' ".$_REQUEST['fax']."',  ' ".$_REQUEST['description']."')";
+$sql = "INSERT INTO Utilisateur(Login, Password, Email, TitreBlog, Prenom, Nom, Sexe, DateNaissance, Adresse, CodePostal, Ville, Pays, Telephone, Mobile, Fax, AproposDeMoi) VALUES (' ".$_REQUEST['login']."', ' ".$_REQUEST['mot_de_passe']."', ' ".$_REQUEST['email']."', ' ".$_REQUEST['titre_blog']."', ' ".$_REQUEST['prenom']."', ' ".$_REQUEST['nom']."', ' ".$_REQUEST['choix']."', ' ".$_REQUEST['date_de_naissance']."', ' ".$_REQUEST['adresse']."', ' ".$_REQUEST['code_postal']."', ' ".$_REQUEST['ville']."', ' ".$_REQUEST['pays']."', ' ".$_REQUEST['tel_fixe']."', ' ".$_REQUEST['mobile']."', ' ".$_REQUEST['fax']."',  ' ".$_REQUEST['description']."')";
 
 if($conn->query($sql)){
 	print(" enregistrement avec succès");
