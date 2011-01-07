@@ -8,6 +8,27 @@
  */
 require_once 'header.php';
 ?>
+<script type="text/javascript" src="lib/template/style/js/jquery.validate.js"></script>
+	    <script type="text/javascript" src="lib/template/style/js/messages_fr.js"></script>
+	    <style type="text/css">
+        label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+        </style>
+	    <script>
+ $(document).ready(function() {	 	 
+ 	 	
+	$("#pass").validate({
+		rules: {
+			email: {
+				required: true,
+				email: true
+				remote: "verif_email.php"
+			},			
+	    	messages: {
+		    	email: "Veuillez entrer une adresse email valide."				
+	    	}	
+		}	
+	});
+	</script>
 </head>
 <body>
 
@@ -30,7 +51,7 @@ include ("navigation.php");
                 <!-- // #sidebar -->                            
                 
                 <div id="main">
-                <form action="pass_oublie_post.php" methode="post" >
+                <form action="pass_oublie_post.php" id ="pass" methode="post" >
                 	<h3>vous avez oublié votre mot de passe?</h3>
                     	<fieldset>
                         	<p><label>Votre email:</label><input type="text" name="mot_de_passe" class="text-long" />                        	
