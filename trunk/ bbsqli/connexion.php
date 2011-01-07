@@ -35,7 +35,7 @@ require_once 'header.php';
                 <form action="connexion_post.php" methode="post" class="jNice">
                 	<h3>Paramètres de connexion</h3>
                     	<fieldset>
-                        	<p><label>Login ou email:</label><input type="text" name="login" class="text-long" /></p>
+                        	<p><label>Login:</label><input type="text" name="login" class="text-long" /></p>
                         	<p><label>Mot de passe:</label><input type="password" name="mot_de_passe" class="text-long" /></p>                        	
                         	<p><a href= "pass_oublie.php">mot de passe oublie? </a></p>
                         	<input type="submit" value="Se connecter" />
