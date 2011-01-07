@@ -30,16 +30,9 @@ include ("navigation.php");
         
         <div id="containerHolder">
 			<div id="container">
-        		<div id="sidebar">
-                	<ul class="sideNav">
-                	    <li><a href="inscription.php">S'inscrire</a></li>                	    
-                    	<li><a href="#">Céer un blog</a></li>                    	
-                    	<li><a href="#">Archives</a></li>
-                    	<li><a href="user_profil.php">Mon profil</a></li>
-                    	
-                    </ul>
-                    <!-- // .sideNav -->
-                </div>    
+			    <?php
+        		require_once 'menu.php';
+        		?>
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->
@@ -66,7 +59,7 @@ if (isset ($_REQUEST['mot_cle'])) {
 		echo '<h3>Veuillez entrer un mot clé</h3>';
 	else {
 		
-		$sql = "SELECT TitreBlog, DateCreationCompte FROM Utilisateur WHERE TitreBlog LIKE '%$mot%' ";
+		$sql = "SELECT TitreBlog, DateCreationCompte FROM Utilisateur WHERE TitreBlog LIKE '%$mot%' ORDER BY TitreBlog ASC LIMIT 0, 10";
 		$search_result = $conn->query($sql);
 		if ($search_result->num_rows) {
 			echo "<h3>Résultat de votre recherche</h3>";
