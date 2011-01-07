@@ -63,11 +63,12 @@ if (isset ($_REQUEST['mot_cle'])) {
 		$search_result = $conn->query($sql);
 		if ($search_result->num_rows) {
 			echo "<h3>Résultat de votre recherche</h3>";
+			echo '<tr><td><strong>Titre du blog</strong></td><td class="action"><strong>Dernière date de mise à jour</strong></td></tr>';
 			while ($search_row = $search_result->fetch_row()) {
 				
 				echo '<tr>' .
 				'<td>';
-				echo '<a href="#">' . $search_row[0] . '</a>' . '</td>' . '<td class="action"><a href="#">' . $search_row[1] . '</a>' .
+				echo '<a href="#">' . $search_row[0] . '</a>' . '</td>' . '<td class="action">' . $search_row[1] .
 				'</td>' .
 				'</tr>';
 			}
@@ -89,11 +90,12 @@ if (isset ($_REQUEST['mot_cle'])) {
 
 $reponse = $conn->query('SELECT TitreBlog, DateCreationCompte FROM Utilisateur ORDER BY DateCreationCompte DESC LIMIT 0, 10');
 if ($reponse->num_rows) {
+	echo '<tr><td><strong>Titre du blog</strong></td><td class="action"><strong>Dernière date de mise à jour</strong></td></tr>';
 	while ($row = $reponse->fetch_row()) {
 		
 		echo '<tr>' .
 		'<td>';
-		echo '<a href="#">' . $row[0] . '</a>' . '</td>' . '<td class="action"><a href="#">' . $row[1] . '</a>' .
+		echo '<a href="#">' . $row[0] . '</a>' . '</td>' . '<td class="action">' . $row[1] .
 		'</td>' .
 		'</tr>';
 	}
