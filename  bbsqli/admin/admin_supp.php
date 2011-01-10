@@ -8,7 +8,7 @@ session_start();
 $_SESSION['curPageName'] = curPageName();
 
 //supression de la ligne
-$sql = 'DELETE FROM Utilisateur WHERE IdUtilisateur='.$_GET["idU"];
+$sql = 'DELETE FROM Utilisateur WHERE IdUtilisateur='.$_GET["id"];
 
 if ($conn->query($sql)) {
 	header('Location: '.$_SESSION['curPageURL'].'&sup=1');

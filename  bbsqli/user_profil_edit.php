@@ -102,11 +102,11 @@ if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
 
 		echo '<table cellpadding="0" cellspacing="0"> <tr><td></td>' .
-		'<td class="action"><a href="user_profil.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
+		'<td class="action"><a href="user_profil.php?id='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
 		'</td></tr></table> ' .
 		'<form action="user_profil_mod.php" id="user_mod_compte" method="post" class="jNice">' .
 		'<fieldset>' .
-		'<input type="hidden" name="idUtilisateur" id="idUtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
+		'<input type="hidden" name="idtilisateur" id="idtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
 		'<p><label for="password">Mot de passe (6 caract&egrave;res minimum) :</label>' .
 		'<input type="password" name="password" id="password" class="text-long" /></p>' .
 		'<p><label for="password">Confirmation de mot de passe (6 caract&egrave;res minimum) :</label>' .

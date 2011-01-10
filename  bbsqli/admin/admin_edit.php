@@ -106,7 +106,7 @@ $sql = 'SELECT IdUtilisateur ,Type	,Login ,Email' .
 ' ,TitreBlog ,Prenom ,Nom ,Sexe ,DateNaissance ,Photo' .
 ' ,Adresse ,CodePostal ,Ville ,Pays ,Telephone ,Mobile' .
 ' ,Fax ,AProposDeMoi' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $_GET["idU"];
+' FROM Utilisateur WHERE IdUtilisateur=' . $_GET["id"];
 
 $results = $conn->query($sql);
 
@@ -114,11 +114,11 @@ if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
 
 		echo '<table cellpadding="0" cellspacing="0"> <tr><td></td>' .
-		'<td class="action"><a href="admin_aff.php?idU='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
+		'<td class="action"><a href="admin_aff.php?id='.$row['IdUtilisateur'].'" class="view">Afficher</a>' .
 		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr></table> ' .
 		'<form action="admin_mod.php" id="mod_compte" method="post" class="jNice">' .
 		'<fieldset>' .
-		'<input type="hidden" name="idUtilisateur" id="idUtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
+		'<input type="hidden" name="idtilisateur" id="idtilisateur" value="' . $row['IdUtilisateur'] . '" />' .
 		'<p><label for="type">Type :</label>' .
 		'<select name="type" id="type">' .
 		'<option value="3" ' . (($row['Type'] == 3) ? "selected='selected'" : "") . '>Utilisateur</option>' .
