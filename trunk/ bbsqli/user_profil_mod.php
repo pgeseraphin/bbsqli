@@ -15,7 +15,7 @@ $sql = 'UPDATE Utilisateur SET Password=' . (empty ($_POST["password"]) ? 'Passw
 		' ,Ville="'.$_POST["ville"].'" ,Pays="'.$_POST["pays"].'" ,Telephone="'.$_POST["telFixe"].'"' .
 		' ,Mobile="'.$_POST["telPort"].'" ,Fax="'.$_POST["fax"].'" 	' .
 		' ,AProposDeMoi="'.$_POST["aboutMe"].'"' .
-		' WHERE IdUtilisateur='.$_POST["idUtilisateur"];
+		' WHERE IdUtilisateur='.$_POST["idtilisateur"];
 
 if ($conn->query($sql)) {
 	if (strpos($_SESSION['curPageURL'], '?')) {

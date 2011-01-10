@@ -100,8 +100,8 @@ if ($results->num_rows) {
 
 		echo '<tr>' .
 		'<td>';
-		echo $row['Login'] . '</td>' . '<td class="action"><a href="admin_aff.php?idU=' . $row['IdUtilisateur'] . '" class="view">Afficher</a>' .
-		'<a href="admin_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
+		echo $row['Login'] . '</td>' . '<td class="action"><a href="admin_aff.php?id=' . $row['IdUtilisateur'] . '" class="view">Afficher</a>' .
+		'<a href="admin_edit.php?id=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
 		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a>' .
 		'</td>' .
 		'</tr>';

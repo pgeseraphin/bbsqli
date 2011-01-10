@@ -37,7 +37,7 @@ $results = $conn->query($sql);
 if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
 		echo '<tr><td></td>' .
-		'<td class="action"><a href="moder_edit.php?idU=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>';
+		'<td class="action"><a href="moder_edit.php?id=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>';
 		echo '<tr><td>Type Utilisateur : ' . '</td>' . '<td>' . labelType($row['Type']) . '</td></tr>';
 		echo '<tr><td>Identifiant : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';
 		echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
