@@ -28,20 +28,45 @@ $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 $userid = $conn->real_escape_string($userid);
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur WHERE IdUtilisateur=' . $userid;</code></pre></td></tr>
-<tr><td><a href="test_escape_quote.php?id=1">Escape Guillemet</a></td>
+<tr><td><a href="test_escape_quote.php?id=1">Escape + Guillemet</a></td>
 <td><pre><code class="jush">
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 $userid = $conn->real_escape_string($userid);
 
 $sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
 ' FROM `Utilisateur` WHERE `IdUtilisateur`="' . $userid . '"';</code></pre></td></tr>
-<tr><td><a href="test_quote_intval.php?id=1">Guillemet Intval</a></td>
+<tr><td><a href="test_quote_intval.php?id=1">Guillemet + Intval</a></td>
 <td><pre><code class="jush">
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 $userid = intval($userid);
 
 $sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
 ' FROM `Utilisateur` WHERE `IdUtilisateur`=' . $userid;</code></pre></td></tr>
+
+<tr><td><a href="test_limit.php?id=0">LIMIT</a></td>
+<td><pre><code class="jush">
+$offset = isset ($_GET['id']) ? $_GET['id'] : 0;
+$offset = $conn->real_escape_string($userid);
+
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur LIMIT ' . $offset .', 10';</code></pre></td></tr>
+
+<tr><td><a href="test_limit_quote_intval.php?id=0">LIMIT + Guillemet + intval</a></td>
+<td><pre><code class="jush">
+$offset = isset ($_GET['id']) ? $_GET['id'] : 0;
+$offset = intval($offset);
+
+
+$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
+' FROM `Utilisateur` LIMIT ' . $offset .', 10';</code></pre></td></tr>
+
+<tr><td><a href="test_limit_is_numeric.php?id=0">LIMIT + is_numeric</a></td>
+<td><pre><code class="jush">
+$offset = isset ($_GET['id']) ? $_GET['id'] : 0;
+$offset = is_numeric($offset);
+
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur LIMIT ' . $offset . ', 10';</code></pre></td></tr>
 
 </table>
 

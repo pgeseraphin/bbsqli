@@ -22,11 +22,12 @@
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-$userid = isset ($_GET['id']) ? $_GET['id'] : 0;
-$userid = $conn->real_escape_string($userid);
+$offset = isset ($_GET['id']) ? $_GET['id'] : 0;
+$offset = $conn->real_escape_string($offset);
 
-$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
-' FROM `Utilisateur` WHERE `IdUtilisateur`="' . $userid . '"';
+
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur LIMIT ' . $offset.', 10';
 
 $results = $conn->query($sql);
 
