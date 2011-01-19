@@ -22,16 +22,17 @@
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-$userid = isset ($_GET['id']) ? $_GET['id'] : 0;
-$userid = intval($userid);
+$order = isset ($_GET['id']) ? $_GET['id'] : 0;
+$order = $conn->real_escape_string($order);
 
-$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
-' FROM `Utilisateur` WHERE `IdUtilisateur`=' . $userid;
+
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur ORDER BY ' . $order;
 
 $results = $conn->query($sql);
 
 if ($results->num_rows) {
-	if ($row = $results->fetch_array()) {
+	while ($row = $results->fetch_array()) {
 		echo '<tr><td></td>' .
 		'<td class="action"><a href="admin_edit.php?id=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
 		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr>';
