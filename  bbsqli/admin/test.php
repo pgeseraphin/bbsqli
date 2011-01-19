@@ -69,13 +69,27 @@ $offset = is_numeric($offset);
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur LIMIT ' . $offset . ', 10';</code></pre></td></tr>
 
-<tr><td><a href="test_limit_is_numeric.php?id=0">LIMIT + is_numeric</a></td>
+<tr><td><a href="test_order_by_escape.php?id=IdUtilisateur">ORDER BY + escape</a></td>
 <td><pre><code class="jush">
-$offset = isset ($_GET['id']) ? $_GET['id'] : 0;
-$offset = is_numeric($offset);
+$order = isset ($_GET['id']) ? $_GET['id'] : 0;
+$order = $conn->real_escape_string($order);
 
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-' FROM Utilisateur LIMIT ' . $offset . ', 10';</code></pre></td></tr>
+' FROM Utilisateur ORDER BY ' . $order;</code></pre></td></tr>
+
+<tr><td><a href="test_order_by_quote.php?id=IdUtilisateur">ORDER BY + quote</a></td>
+<td><pre><code class="jush">
+$order = isset ($_GET['id']) ? $_GET['id'] : 0;
+if (!in_array($order, Array (
+		'IdUtilisateur',
+		'Type',
+		'Login',
+		'Email'
+	)))
+	$order = 'IdUtilisateur';
+
+$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
+' FROM `Utilisateur` ORDER BY `' . $order . '`';</code></pre></td></tr>
 
 </table>
 
