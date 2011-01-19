@@ -19,12 +19,7 @@ require_once 'header.php';
  	 	
 	$("#signupform").validate({
 		rules: {
-			nom:{
-				required: true
-			},
-			prenom:{
-				required: true
-			},
+			
 			login: {
 				required: true,
 				minlength: 2,
@@ -93,24 +88,24 @@ require_once 'header.php';
                 <!-- h2 stays for breadcrumbs -->                
                 
                 <div id="main">
-                <form action="inscription_post.php" id="signupform" methode="post" class="jNice">
+                <form action="inscription_post.php" id="signupform" method="post" class="jNice">
                 	<h3>Renseigner les champs obligatoires</h3>
                     	<fieldset>
-                        	<p><label>Nom*:</label><input type="text" name="nom" class="text-long" /></p>
-                        	<p><label>Prénom*:</label><input type="text" name="prenom" class="text-long" /></p>
-                        	<p><label>Login* (2 caract&egrave;res minimum):</label><input type="text" name="login" class="text-long" /></p>
-                        	<p><label>Mot de passe* (4 caract&egrave;res minimum):</label><input type="password" name="mot_de_passe" id="mot_de_passe" class="text-long" /></p>
-                        	<p><label>confirmez le mot de passe* (4 caract&egrave;res minimum):</label><input type="password" name="confirmation_mdp" id="confirmation_mdp" class="text-long" /></p>
-                        	<p><label>Titre de votre blog*:</label><input type="text" name="titre_blog" class="text-long" /></p>
-                        	<p><label>Email*:</label><input type="text" name="email" class="text-long" /></p>
-                        	<p><label>Téléphone mobile:</label><input type="text" name="mobile" class="text-long" /></p>
-                        	<p><label>Téléphone fixe:</label><input type="text" name="tel_fixe" class="text-long" /></p>
-                        	<p><label>Fax:</label><input type="text" name="fax" class="text-long" /></p>
-                        	<p><label>Date de naissance:</label><input type="text" name="date_de_naissance" class="text-long" /></p>
-                        	<p><label>Adresse:</label><input type="text" name="adresse" class="text-long" /></p>
-                        	<p><label>Code postal, ville et Pays:</label>
+                        	<p><label>Nom :</label><input type="text" name="nom" class="text-long" /></p>
+                        	<p><label>Prénom :</label><input type="text" name="prenom" class="text-long" /></p>
+                        	<p><label>Login* (2 caract&egrave;res minimum) :</label><input type="text" name="login" class="text-long" /></p>
+                        	<p><label>Mot de passe* (4 caract&egrave;res minimum) :</label><input type="password" name="mot_de_passe" id="mot_de_passe" class="text-long" /></p>
+                        	<p><label>confirmez le mot de passe* (4 caract&egrave;res minimum) :</label><input type="password" name="confirmation_mdp" id="confirmation_mdp" class="text-long" /></p>
+                        	<p><label>Titre de votre blog* :</label><input type="text" name="titre_blog" class="text-long" /></p>
+                        	<p><label>Email* :</label><input type="text" name="email" class="text-long" /></p>
+                        	<p><label>Téléphone mobile :</label><input type="text" name="mobile" class="text-long" /></p>
+                        	<p><label>Téléphone fixe :</label><input type="text" name="tel_fixe" class="text-long" /></p>
+                        	<p><label>Fax :</label><input type="text" name="fax" class="text-long" /></p>
+                        	<p><label>Date de naissance :</label><input type="text" name="date_de_naissance" class="text-long" /></p>
+                        	<p><label>Adresse :</label><input type="text" name="adresse" class="text-long" /></p>
+                        	<p><label>Code postal, ville et Pays :</label>
                         	<input type="text" name="code_postal" class="text-small" /><input type="text" name="ville" class="text-small" /><input type="text" name="pays" class="text-medium" /></p>
-                            <p><label>Sexe:</label>
+                            <p><label>Sexe :</label>
                             <select name="choix">
                                 <option></option>
                             	<option>Masculin</option>

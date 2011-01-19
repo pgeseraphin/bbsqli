@@ -25,18 +25,21 @@ if(!$valide)
 }
 else
 {	
-	$sql = "SELECT * FROM Utilisateur WHERE Login = '$login' AND Password = '$pwd' ";
-	$resultat = $conn->query($sql);	
+	$sql = "SELECT IdUtilisateur, Login, Type FROM Utilisateur WHERE Login = '$login' AND Password = '$pwd'";
+	//$sql = "SELECT IdUtilisateur, Login, Type FROM Utilisateur WHERE Login = 'log4' ";//"' AND Password = '$pwd'";
+	//$sql = "SELECT IdUtilisateur, Login, Type FROM Utilisateur WHERE Login = 'sal'";
+	$resultat = $conn->query($sql);
+	//$resultat = $conn->query("SELECT IdUtilisateur, Login, Type FROM Utilisateur WHERE Login = 'log4' #nimporte koi");	
+	//echo " $sql\n";
 	//echo " $resultat->num_rows\n";
 	
 	if($resultat->num_rows > 0){
-		$obj= $resultat->fetch_object();		
+		$obj= $resultat->fetch_object();
+		//echo " $login + $pwd £££££££  $obj->Email";		
 		$_SESSION['user_id']= $obj->IdUtilisateur;
 		$_SESSION['user_login']= $obj->Login;
 		$_SESSION['user_type']= $obj->Type;
-		//$_SESSION['login'] = 'DIALLO';
-		//echo $_SESSION['user_login'] . $_SESSION['user_id']; 
-		//print(" connexion reussie : $obj->Email . $_SESSION['Nom']");
+		
 		header('Location: user_profil.php');		
 	}
 	else {
