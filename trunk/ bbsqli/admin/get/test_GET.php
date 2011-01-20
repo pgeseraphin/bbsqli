@@ -10,13 +10,14 @@
 	
 </head>
 <body>
-<script type="text/javascript" src="style/js/jquery.jush.js"></script>
+<script type="text/javascript" src="../style/js/jquery.jush.js"></script>
 <script type="text/javascript">
 jush.style('style/css/jush.css');
 jush.highlight_tag('code');
 </script>
+<h1>GET</h1>
 <table border="1">
-<tr><td><a href="test_GET.php?id=1">GET</a></td>
+<tr><td><a href="test_unprotect.php?id=1">Sans protection</a></td>
 <td><pre><code class="jush">
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 

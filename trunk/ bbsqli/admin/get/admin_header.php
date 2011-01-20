@@ -1,7 +1,7 @@
 <?php
-require_once 'auth_admin.php';
-require_once 'db.php';
-require_once 'lib.php';
+require_once '../auth_admin.php';
+require_once '../db.php';
+require_once '../lib.php';
 
 session_start();
 $_SESSION['curPageURL'] = curPageURL();
@@ -34,11 +34,11 @@ switch ($_GET["cat"]) {
 <title>Mon Blog - Administration</title>
 
 <!-- CSS -->
-<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
+<link href="../style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../style/css/ie7.css" /><![endif]-->
 
 
 <!-- JavaScripts-->
-<script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/jNice.js"></script>
+<script type="text/javascript" src="../style/js/jquery.js"></script>
+<script type="text/javascript" src="../style/js/jNice.js"></script>
