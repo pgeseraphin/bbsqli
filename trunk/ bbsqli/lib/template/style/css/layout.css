@@ -189,12 +189,20 @@ h3 {
 
 #main table tr:hover .action a:hover { text-decoration: underline; }
 
+#main .faille_exploit {
+        border: 1px solid #ddd;
+	padding: 19px;
+	margin: 0 0 20px 0;
+	background: #fbfbfb;
+}
+
 #main fieldset {
 	border: 1px solid #ddd;
 	padding: 19px;
 	margin: 0 0 20px 0;
 	background: #fbfbfb;
 }
+
 
 #main fieldset p { margin: 0 0 14px 0; float: left; width: 100%;  }
 
