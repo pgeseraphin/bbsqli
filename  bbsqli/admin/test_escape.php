@@ -27,6 +27,7 @@ $userid = $conn->real_escape_string($userid);
 
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur WHERE IdUtilisateur=' . $userid;
+//$sql = "SELECT IdUtilisateur, Type,	Login, Email FROM Utilisateur WHERE IdUtilisateur= '$userid'";
 
 $results = $conn->query($sql);
 

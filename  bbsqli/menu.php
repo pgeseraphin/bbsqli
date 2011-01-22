@@ -5,6 +5,8 @@
          <li><a href="#">Archives</a></li>
          <li><a href="test_connexion.php">Authentification</a></li>
          <li><a href="test_connexion_escape_string.php">Authent. escape string </a></li>
+         <li><a href="test_findUser.php">Trouver un user 1</a></li>
+         <li><a href="test_findUser_escape_string.php">Trouver un user 2</a></li>
          <?php
           session_start();
           if (isset($_SESSION['user_id'])) 
