@@ -39,6 +39,11 @@ require_once 'menu.php';
                 
                 <div id="main">
                 <h3>Ce test est réalisé sans caractères d'échappement</h3>
+                    <div class="faille_exploit">
+                    <p>Cette page contient des failles aux injections Sql liées aux caractères d'échappement</p>
+                    
+                   
+                    </div>
                     
                     <form action="" method="post">					
 					<fieldset>
