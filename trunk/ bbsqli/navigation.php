@@ -10,7 +10,9 @@
 echo '<ul id="mainNav">' .
 '<li><a href= "index.php">ACCUEIL</a></li>' .
 '<!-- Use the "active" class for the active menu item  -->' .
-'<li><a href="#">OPTION</a></li>';
+'<li><a href="admin/get/test_GET.php">GET</a></li>' .
+'<li><a href="index.php">POST</a></li>' .
+'<li><a href="admin/cookie/test_COOKIE.php">COOKIE</a></li>';
 
 session_start();
 
