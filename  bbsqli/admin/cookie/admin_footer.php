@@ -1,0 +1,1 @@
+<p id="footer">Mon Blog &#169; 2010-2011</p>
