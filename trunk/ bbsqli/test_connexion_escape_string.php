@@ -41,8 +41,17 @@ include ("navigation.php");
                 <!-- // #sidebar -->                            
                 
                 <div id="main">
+                <h3>Paramètres d'authentification sans échappement des caractères spéciaux</h3>
+                
+                 <div class="faille_exploit">
+                    <p>$login = $conn->real_escape_string($_POST['login']);</p><br/>
+                    <p>$pwd = $conn->real_escape_string($_POST['mot_de_passe']);</p><br/>
+	                <p>$sql = "SELECT IdUtilisateur, Login, Type, Email FROM Utilisateur WHERE Login = '$login' AND Password = '$pwd'";	</p>
+                    
+                         
+                 </div>
                 <form action="" method="post" class="jNice">
-                	<h3>Paramètres d'authentification utilisant l'échappement de caractères spéciaux'</h3>
+                	
                     	<fieldset>
                         	<p><label>Login:</label><input type="text" name="login" class="text-long" /></p>
                         	<p><label>Mot de passe:</label><input type="password" name="mot_de_passe" class="text-long" /></p>                        	

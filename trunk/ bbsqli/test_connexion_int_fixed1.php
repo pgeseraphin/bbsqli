@@ -41,15 +41,16 @@ include ("navigation.php");
                 <!-- // #sidebar -->                            
                 
                 <div id="main">
-                <h3>Paramètres d'authentification sans échappement des caractères spéciaux</h3>
+                 <h3>Paramètres d'authentification sans échappement des caractères spéciaux</h3>
                 
                  <div class="faille_exploit">
-                    <p>$login = $_POST['login'];</p><br/>
-                    <p>$pwd = $_POST['mot_de_passe'];</p><br/>
-                    <p>$sql = "SELECT IdUtilisateur, Login, Type, Email FROM Utilisateur WHERE Login = '$login' AND Password = '$pwd'";</p>
-                         
+                 
+                    <p>$id = $conn->real_escape_string($_POST['login']);</p><br/>
+                    <p>$pwd = $conn->real_escape_string($_POST['mot_de_passe']);</p><br/>
+                    <p>$sql = "SELECT IdUtilisateur, Login, Type, Email FROM Utilisateur WHERE IdUtilisateur = $id AND Password = '$pwd'";</p>
                  </div>
                 <form action="" method="post" class="jNice">
+                
                     	<fieldset>
                         	<p><label>Login:</label><input type="text" name="login" class="text-long" /></p>
                         	<p><label>Mot de passe:</label><input type="password" name="mot_de_passe" class="text-long" /></p>                        	
@@ -67,9 +68,9 @@ $valide = (isset ($_POST['login']) AND isset ($_POST['mot_de_passe']) AND !empty
 
 
 if ($valide) {
-	$login = $_POST['login'];
-    $pwd = $_POST['mot_de_passe'];
-	$sql = "SELECT IdUtilisateur, Login, Type, Email FROM Utilisateur WHERE Login = '$login' AND Password = '$pwd'";	
+	$id = $conn->real_escape_string($_POST['login']);
+    $pwd = $conn->real_escape_string($_POST['mot_de_passe']);
+	$sql = "SELECT IdUtilisateur, Login, Type, Email FROM Utilisateur WHERE IdUtilisateur = $id AND Password = '$pwd'";	
 	$resultat = $conn->query($sql);
 	if ($resultat->num_rows > 0) {
 		
