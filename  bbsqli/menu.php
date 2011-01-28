@@ -11,9 +11,11 @@
          <li><a title= "Post->Int: avec Escape+Guillemet+Intval" href="test_connexion_int_fixed3.php">Authent. [int]+Inval </a></li>
          <li><a href="test_findUser.php">Trouver un user 1</a></li>
          <li><a href="test_findUser_escape_string.php">Trouver un user 2</a></li>
-         <li><a title= "Post-> Limit: sans protection" href="test_search.php">Liste des User 1</a></li>
-         <li><a title= "Post-> Limit: Guillemet+Intval" href="test_search_fixed1.php">Liste des User 2</a></li>
-         <li><a title= "Post-> Limit: is_numeric" href="test_search_fixed2.php">Liste des User 3</a></li>
+         <li><a title= "Post-> Limit: sans protection" href="test_search.php">Liste des Users 1</a></li>
+         <li><a title= "Post-> Limit: Guillemet+Intval" href="test_search_fixed1.php">Liste des Users 2</a></li>
+         <li><a title= "Post-> Limit: is_numeric" href="test_search_fixed2.php">Liste des Users 3</a></li>
+         <li><a title= "Post-> Order by: + Escape" href="test_order_by.php">Liste des Users 4</a></li>
+         <li><a title= "Post-> Order by: + quote" href="test_order_by_fixed.php">Liste des Users 5</a></li>
          <?php
           session_start();
           if (isset($_SESSION['user_id'])) 
