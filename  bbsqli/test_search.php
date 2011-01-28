@@ -31,8 +31,8 @@ include ("navigation.php");
         <div id="containerHolder">
 			<div id="container">
 			    <?php
-        		require_once 'menu.php';
-        		?>
+require_once 'menu.php';
+?>
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->
@@ -42,8 +42,8 @@ include ("navigation.php");
                 
                     <form action="" method="post">					
 					<fieldset>
-					        <p>Entrer le titre du blog</p>
-                        	<p><input type="text" name="mot_cle" class="text-long" />                       	
+					        <p>Numéro de page: </p>
+                        	<p><input type="text" name="mot_cle" class="text-medium" />                       	
                         	<input type="submit" value="Rechercher" /></p> 
                     </fieldset>   
                     </form>    
@@ -52,35 +52,26 @@ include ("navigation.php");
 					<?php
 
 
-if (isset ($_POST['mot_cle'])) {
-	
-	$mot = $_POST['mot_cle'];
-	if (empty ($_POST['mot_cle']))
-		echo '<h3>Veuillez entrer un mot clé</h3>';
-	else {
+
+$offset = isset ($_POST['mot_cle']) ? $_POST['mot_cle'] : 0;
+$offset = $conn->real_escape_string($offset);
+$reponse = $conn->query("SELECT Login, Prenom, Nom, Email FROM Utilisateur LIMIT $offset, 6");
+if ($reponse->num_rows) {
+	//echo '<tr><td><strong>Titre du blog</strong></td><td class="action"><strong>Dernière date de mise à jour</strong></td></tr>';
+	while ($row = $reponse->fetch_row()) {
 		
-		$sql = "SELECT TitreBlog, DateCreationCompte FROM Utilisateur WHERE TitreBlog LIKE '%$mot%' ORDER BY TitreBlog ASC LIMIT 0, 10";
-		$search_result = $conn->query($sql);
-		if ($search_result->num_rows) {
-			echo "<h3>Résultat de votre recherche</h3>";
-			echo '<tr><td><strong>Titre du blog</strong></td><td class="action"><strong>Dernière date de mise à jour</strong></td></tr>';
-			while ($search_row = $search_result->fetch_row()) {
-				
-				echo '<tr>' .
-				'<td>';
-				echo '<a href="#">' . $search_row[0] . '</a>' . '</td>' . '<td class="action">' . $search_row[1] .
-				'</td>' .
-				'</tr>';
-			}
-		} else
-			echo '<h3>Auccun résultat ne correspond à votre recherche</h3>';
-		
-		$search_result->close();
+		echo '<tr><td>Nom : ' . '</td>' . '<td>' . $row[0] . '</td></tr>';
+		echo '<tr><td>Prénom : ' . '</td>' . '<td>' . $row[1] . '</td></tr>';				
+		echo '<tr><td>Login : ' . '</td>' . '<td>' . $row[2] . '</td></tr>';				
+		echo '<tr><td>Email : ' . '</td>' . '<td>' . $row[3] . '</td></tr>';
+		echo '<tr><td>***************</td><td>***************</td></tr>';
 	}
-	
 }
+else
+     echo'<h3>Entrer un numéro valide</h3>';
+$reponse->close();
 ?>  
-</table>
+</table>   
 </div>       
                 	
                 <!-- // #main -->
