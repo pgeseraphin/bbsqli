@@ -31,11 +31,9 @@ include ("navigation.php");
 			<div id="container">
         		<div id="sidebar">  
         		    <ul class="sideNav">         
-          <li><a title= "Post->Int: sans protection" href="test_connexion_int.php">4. Authent.[int]</a></li>
-         <li><a title= "Post->Int: avec Escape" href="test_connexion_int_fixed1.php">5. Authent. [int]+Escape </a></li>
-         <li><a title= "Post->Int: avec Escape+Guillemet" href="test_connexion_int_fixed2.php">6. Authent. [int]+Guillemet </a></li>
-         <li><a title= "Post->Int: avec Escape+Guillemet+Intval" href="test_connexion_int_fixed3.php">7. Authent. [int]+Inval </a></li>
-
+         <li><a title= "Post->String: sans protection" href="test_connexion.php">1. Authentification[string] </a></li>
+         <li><a title= "Post->String: Escape" href="test_connexion_escape_string.php">2. Authentification[string]  </a></li>
+         <li><a title= "Post->String: Escape+guillemet" href="test_connexion_escape_guillemet.php">3. Authentification[string]</a></li>  
                             	
     </ul>              	
                     <!-- // .sideNav -->
@@ -44,16 +42,17 @@ include ("navigation.php");
                 <!-- // #sidebar -->                            
                 
                 <div id="main">
-                 <h3>Paramètres d'authentification sans échappement des caractères spéciaux</h3>
+                <h3>Paramètres d'authentification sans échappement des caractères spéciaux</h3>
                 
                  <div class="faille_exploit">
-                    <p>$id = intval($_POST['login']);</p><br/>
-                    <p>$id = $conn->real_escape_string($id);</p><br/>
+                    <p>$login = $conn->real_escape_string($_POST['login']);</p><br/>
                     <p>$pwd = $conn->real_escape_string($_POST['mot_de_passe']);</p><br/>
-                    <p>$sql = "SELECT `IdUtilisateur`, `Login`, `Type`, `Email` FROM `Utilisateur` WHERE `IdUtilisateur` = $id AND `Password` = '$pwd'";</p>
+	                <p>$sql = "SELECT `IdUtilisateur`, `Login`, `Type`, `Email` FROM `Utilisateur` WHERE `Login` = '$login' AND `Password` = '$pwd'";</p>
+                    
+                         
                  </div>
                 <form action="" method="post" class="jNice">
-                
+                	
                     	<fieldset>
                         	<p><label>Login:</label><input type="text" name="login" class="text-long" /></p>
                         	<p><label>Mot de passe:</label><input type="password" name="mot_de_passe" class="text-long" /></p>                        	
@@ -67,14 +66,13 @@ include ("navigation.php");
 
 
 //$valide = (!empty ($_REQUEST['login']) AND !empty ($_REQUEST['mot_de_passe']));
-$valide = (isset ($_POST['login']) AND isset ($_POST['mot_de_passe']) AND !empty($_POST['login']) AND !empty($_POST['mot_de_passe']));
-
+$valide = (isset ($_REQUEST['login']) AND isset ($_REQUEST['mot_de_passe']) AND !empty($_REQUEST['login']) AND !empty($_REQUEST['mot_de_passe']));
 
 if ($valide) {
-	$id = intval($_POST['login']);
-	$id = $conn->real_escape_string($id);
-    $pwd = $conn->real_escape_string($_POST['mot_de_passe']);
-	$sql = "SELECT `IdUtilisateur`, `Login`, `Type`, `Email` FROM `Utilisateur` WHERE `IdUtilisateur` = $id AND `Password` = '$pwd'";	
+	
+	$login = $conn->real_escape_string($_REQUEST['login']);
+    $pwd = $conn->real_escape_string($_REQUEST['mot_de_passe']);
+	$sql = "SELECT `IdUtilisateur`, `Login`, `Type`, `Email` FROM `Utilisateur` WHERE `Login` = '$login' AND `Password` = '$pwd'";	
 	$resultat = $conn->query($sql);
 	if ($resultat->num_rows > 0) {
 		
@@ -109,5 +107,4 @@ if ($valide) {
     <!-- // #wrapper --> 	
 </body>
 </html>
-
 

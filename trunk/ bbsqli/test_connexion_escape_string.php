@@ -31,12 +31,9 @@ include ("navigation.php");
 			<div id="container">
         		<div id="sidebar">  
         		    <ul class="sideNav">         
-         <li><a title= "Post->String: sans protection" href="test_connexion.php">Authentification [string]</a></li>
-         <li><a title= "Post->String: avec protection" href="test_connexion_escape_string.php">Authent. [string]+Escape  </a></li>
-         <li><a title= "Post->Int: sans protection" href="test_connexion_int.php">Authent. [int]</a></li>
-         <li><a title= "Post->Int: avec Escape" href="test_connexion_int_fixed1.php">Authent. [int]+Escape </a></li>
-         <li><a title= "Post->Int: avec Escape+Guillemet" href="test_connexion_int_fixed2.php">Authent. [int]+Guillemet </a></li>
-         <li><a title= "Post->Int: avec Escape+Guillemet+Inval" href="test_connexion_int_fixed3.php">Authent. [int]+Inval </a></li>     
+          <li><a title= "Post->String: sans protection" href="test_connexion.php">1. Authentification[string] </a></li>
+         <li><a title= "Post->String: Escape" href="test_connexion_escape_string.php">2. Authentification[string]  </a></li>
+         <li><a title= "Post->String: Escape+guillemet" href="test_connexion_escape_guillemet.php">3. Authentification[string]</a></li>  
                             	
     </ul>              	
                     <!-- // .sideNav -->
@@ -68,13 +65,13 @@ include ("navigation.php");
                 <?php
 
 
-//$valide = (!empty ($_REQUEST['login']) AND !empty ($_REQUEST['mot_de_passe']));
+				//$valide = (!empty ($_REQUEST['login']) AND !empty ($_REQUEST['mot_de_passe']));
 $valide = (isset ($_REQUEST['login']) AND isset ($_REQUEST['mot_de_passe']) AND !empty($_REQUEST['login']) AND !empty($_REQUEST['mot_de_passe']));
 
 if ($valide) {
 	
 	$login = $conn->real_escape_string($_REQUEST['login']);
-    $pwd = $conn->real_escape_string($_REQUEST['mot_de_passe']);
+	$pwd = $conn->real_escape_string($_REQUEST['mot_de_passe']);
 	$sql = "SELECT IdUtilisateur, Login, Type, Email FROM Utilisateur WHERE Login = '$login' AND Password = '$pwd'";	
 	$resultat = $conn->query($sql);
 	if ($resultat->num_rows > 0) {
@@ -83,17 +80,17 @@ if ($valide) {
 		$_SESSION['user_id'] = $obj->IdUtilisateur;
 		$_SESSION['user_login'] = $obj->Login;
 		$_SESSION['user_type'] = $obj->Type;		
-
+		
 		header('Location: user_profil.php');
 	} else {
-
+		
 		//echo " Echec d'authentification ";
 		echo '<span style="color : red;">Echec d\'authentification</span>';
 		//header('Location: test_connexion.php');
 	}
 	$resultat->close();
 	$conn->close();
-
+	
 }
 ?>
 </div>
