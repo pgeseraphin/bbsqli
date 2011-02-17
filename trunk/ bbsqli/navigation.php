@@ -10,6 +10,7 @@
 echo '<ul id="mainNav">' .
 '<li><a href= "index.php">ACCUEIL</a></li>' .
 '<!-- Use the "active" class for the active menu item  -->' .
+'<li><a href="admin/test.php">GET (sans erreurs)</a></li>' .
 '<li><a href="admin/get/test_GET.php">GET</a></li>' .
 '<li><a href="admin/get_string/test_GET_string.php">GET_string</a></li>' .
 '<li><a href="index.php">POST</a></li>' .
@@ -19,7 +20,7 @@ echo '<ul id="mainNav">' .
 session_start();
 
 if ($_SESSION['user_type'] == '1') {
-	echo '<li><a href="admin/admin.php">ADMINISTRATION</a></li>';
+	echo '<li><a href="admin/admin.php">ADMIN</a></li>';
 }
 elseif ($_SESSION['user_type'] == '2') {
 	echo '<li><a href="admin/moder.php">MODERATION</a></li>';
