@@ -42,7 +42,8 @@ require_once 'menu.php';
                 <h3>Ce test est réalisé en utilisant "real escape string"</h3>
                 <div class="faille_exploit">
                     <p>$mot = $conn->real_escape_string($_POST['mot_cle']);</p><br/>
-                    <p>$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";</p><br/>
+                    <p>$mot = addcslashes($mot, "%_");</p><br/>
+                    <p>$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";</p><br/>	                
 	                <p>$search_result = $conn->query($sql);</p>              
                   
                   </div>
@@ -66,6 +67,8 @@ if (isset ($_POST['mot_cle'])) {
 	else {
 		
 		$mot = $conn->real_escape_string($_POST['mot_cle']);
+		$mot = addcslashes($mot, "%_");
+		
 		$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";
 		$search_result = $conn->query($sql);
 		if ($search_result->num_rows) {

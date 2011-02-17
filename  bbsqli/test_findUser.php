@@ -40,10 +40,11 @@ require_once 'menu.php';
                 <div id="main">
                 <h3>Ce test est réalisé sans caractères d'échappement</h3>
                     <div class="faille_exploit">
-                    <p>Cette page contient des failles aux injections Sql liées aux caractères d'échappement</p>
-                    
-                   
-                    </div>
+                    <p>$mot = $_POST['mot_cle'];</p><br/>
+                    <p>$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";</p><br/>
+	                <p>$search_result = $conn->query($sql);</p>              
+                  
+                  </div>
                     
                     <form action="" method="post">					
 					<fieldset>
@@ -57,24 +58,24 @@ require_once 'menu.php';
 					<?php
 
 
-if (isset ($_POST['mot_cle'])) {
-	
+if (isset ($_POST['mot_cle'])) {	
 	
 	if (empty ($_POST['mot_cle']))
 		echo '<h3>Veuillez entrer un mot clé</h3>';
 	else {
 		
 		$mot = $_POST['mot_cle'];
-		$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login = '$mot'";
+		$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";
 		$search_result = $conn->query($sql);
 		if ($search_result->num_rows) {
 			echo "<h3>Résultat de votre recherche</h3>";
-			if ($row = $search_result->fetch_array()) {
+			while ($row = $search_result->fetch_row()) {
 				
-				echo '<tr><td>Nom : ' . '</td>' . '<td>' . $row['Nom'] . '</td></tr>';
-				echo '<tr><td>Prénom : ' . '</td>' . '<td>' . $row['Prenom'] . '</td></tr>';				
-				echo '<tr><td>Login : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';				
-				echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
+				echo '<tr><td>Nom : ' . '</td>' . '<td>' . $row[0] . '</td></tr>';
+				echo '<tr><td>Prénom : ' . '</td>' . '<td>' . $row[1] . '</td></tr>';				
+				echo '<tr><td>Login : ' . '</td>' . '<td>' . $row[2] . '</td></tr>';				
+				echo '<tr><td>Email : ' . '</td>' . '<td>' . $row[3] . '</td></tr>';
+				echo '<tr><td>***************</td><td>***************</td></tr>';
 			}
 			
 		} else
