@@ -55,7 +55,7 @@ require_once 'menu.php';
 
 $offset = isset ($_POST['mot_cle']) ? $_POST['mot_cle'] : 0;
 if (is_numeric($offset)){ 
-	$reponse = $conn->query("SELECT `Login`, `Prenom`, `Nom`, `Email` FROM `Utilisateur` LIMIT $offset, 6");
+	$reponse = $conn->query("SELECT Login, Prenom, Nom, Email FROM Utilisateur LIMIT $offset, 6");
 	if ($reponse->num_rows) {
 		//echo '<tr><td><strong>Titre du blog</strong></td><td class="action"><strong>Dernière date de mise à jour</strong></td></tr>';
 		while ($row = $reponse->fetch_row()) {
