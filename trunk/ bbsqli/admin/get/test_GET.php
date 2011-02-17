@@ -74,51 +74,6 @@ $offset = is_numeric($offset);
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur LIMIT ' . $offset . ', 10';</code></pre></td></tr>
 
-<tr><td><a href="test_order_by_escape.php?id=IdUtilisateur">ORDER BY + escape</a></td>
-<td><pre><code class="jush">
-$order = isset ($_GET['id']) ? $_GET['id'] : 0;
-$order = $conn->real_escape_string($order);
-
-$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-' FROM Utilisateur ORDER BY ' . $order;</code></pre></td></tr>
-
-<tr><td><a href="test_order_by_quote.php?id=IdUtilisateur">ORDER BY + quote</a></td>
-<td><pre><code class="jush">
-$order = isset ($_GET['id']) ? $_GET['id'] : 0;
-if (!in_array($order, Array (
-		'IdUtilisateur',
-		'Type',
-		'Login',
-		'Email'
-	)))
-	$order = 'IdUtilisateur';
-
-$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
-' FROM `Utilisateur` ORDER BY `' . $order . '`';</code></pre></td></tr>
-
-<tr><td><a href="test_like_escape.php?id=pgeseraphin">LIKE + escape</a></td>
-<td><pre><code class="jush">
-$search = isset ($_GET['id']) ? $_GET['id'] : '';
-
-if ($search != '') {
-	$search = $conn->real_escape_string($search);
-
-	$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-	' FROM Utilisateur WHERE Login LIKE "' . $search . '%"';
-}</code></pre></td></tr>
-
-<tr><td><a href="test_like_escape_quote.php?id=pgeseraphin">LIKE + escape + quote</a></td>
-<td><pre><code class="jush">
-$search = isset ($_GET['id']) ? $_GET['id'] : '';
-
-if ($search != '') {
-	$search = $conn->real_escape_string($search);
-	$search = addcslashes($search, "%_");
-
-	$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
-	' FROM `Utilisateur` WHERE `Login` LIKE "' . $search . '%"';
-}</code></pre></td></tr>
-
 </table>
 
 </body>

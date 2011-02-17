@@ -14,7 +14,7 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">GET</a></h2>
+                <h2><a href="#">COOKIE avec string</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
@@ -22,7 +22,7 @@
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-$search = isset ($_GET['id']) ? $_GET['id'] : '';
+$search = isset ($_COOKIE['id2']) ? $_COOKIE['id2'] : '';
 
 if ($search != '') {
 	$search = $conn->real_escape_string($search);
@@ -33,10 +33,10 @@ if ($search != '') {
 
 	$results = $conn->query($sql);
 	
-	if(!$results){
-	echo 'Erreur : ' . mysqli_error($conn);
-	
-	}else{
+//	if(!$results){
+//	echo 'Erreur : ' . mysqli_error($conn);
+//	
+//	}else{
 		if ($results->num_rows) {
 			while ($row = $results->fetch_array()) {
 				echo '<tr><td></td>' .
@@ -50,7 +50,7 @@ if ($search != '') {
 			echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
 		}
 	}
-}
+//}
 ?> 
 </table>   	
                 	

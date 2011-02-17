@@ -76,40 +76,6 @@ $offset = is_numeric($offset);
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur LIMIT ' . $offset . ', 10';</code></pre></td></tr>
 
-<tr><td><a href="test_order_by_escape.php">ORDER BY + escape</a></td>
-<td><pre><code class="jush">
-$order = isset ($_COOKIE['id']) ? $_COOKIE['id'] : 0;
-$order = $conn->real_escape_string($order);
-
-$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-' FROM Utilisateur ORDER BY ' . $order;</code></pre></td></tr>
-
-<tr><td><a href="test_order_by_quote.php">ORDER BY + quote</a></td>
-<td><pre><code class="jush">
-$order = isset ($_COOKIE['id']) ? $_COOKIE['id'] : 0;
-if (!in_array($order, Array (
-		'IdUtilisateur',
-		'Type',
-		'Login',
-		'Email'
-	)))
-	$order = 'IdUtilisateur';
-
-$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
-' FROM `Utilisateur` ORDER BY `' . $order . '`';</code></pre></td></tr>
-
-<tr><td><a href="test_like_escape.php">LIKE + escape</a></td>
-<td><pre><code class="jush">
-$search = isset ($_COOKIE['id2']) ? $_COOKIE['id2'] : '';
-
-if ($search != '') {
-	$search = $conn->real_escape_string($search);
-
-	$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-	' FROM Utilisateur WHERE Login LIKE "' . $search . '%"';
-}</code></pre></td></tr>
-
-
 </table>
 
 </body>
