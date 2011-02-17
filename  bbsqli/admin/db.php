@@ -8,7 +8,7 @@
  */
 
 //$conn = new mysqli('localhost', 'root', 'veniu/', 'Blog');
-$conn = new mysqli('localhost', 'root', 'tololo', 'Blog');
+$conn = new mysqli('localhost', 'root', 'cazeau', 'Blog');
 
 /* check connection */
 if (mysqli_connect_errno()) {
