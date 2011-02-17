@@ -69,7 +69,7 @@ if (isset ($_POST['mot_cle'])) {
 		$mot = $conn->real_escape_string($_POST['mot_cle']);
 		$mot = addcslashes($mot, "%_");
 		
-		$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";
+		$sql = "SELECT `Login`, `Prenom`, `Nom`, `Email` FROM `Utilisateur` WHERE `Login` LIKE '$mot%'";
 		$search_result = $conn->query($sql);
 		if ($search_result->num_rows) {
 			echo "<h3>Résultat de votre recherche</h3>";
