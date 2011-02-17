@@ -22,7 +22,7 @@
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-$user = isset ($_GET['login']) ? $_GET['login'] : 0;
+$user = isset ($_GET['login']) ? $_GET['login'] : '';
 $sql = 'SELECT Type, Login, Email' .
 ' FROM Utilisateur WHERE Login="' . $user.'"';
 

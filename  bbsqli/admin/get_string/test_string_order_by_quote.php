@@ -22,7 +22,7 @@
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-$order = isset ($_GET['login']) ? $_GET['login'] : 0;
+$order = isset ($_GET['login']) ? $_GET['login'] : '';
 if (!in_array($order, Array (
 		'IdUtilisateur',
 		'Type',
