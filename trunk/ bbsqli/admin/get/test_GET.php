@@ -15,7 +15,7 @@
 jush.style('style/css/jush.css');
 jush.highlight_tag('code');
 </script>
-<h1>GET</h1>
+<h1>GET (avec affichage des erreurs)</h1>
 <table border="1">
 
 <tr><td><a href="test_unprotect.php?id=1">Sans protection</a></td>
