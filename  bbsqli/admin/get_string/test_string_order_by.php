@@ -23,6 +23,7 @@
                 <table cellpadding="0" cellspacing="0">                
 <?php
 $order = isset ($_GET['login']) ? $_GET['login'] : '';
+
 $sql = 'SELECT Type, Login, Email' .
 ' FROM Utilisateur ORDER BY "' . $order.'"';
 
