@@ -19,7 +19,7 @@
   }*/
 $host = "localhost";
 $user = "root";
-$pass = "tololo";
+$pass = "cazeau";
 $bdd = "Blog";
 /*$mysqli = new mysql($host, $user, $pass, $bdd) or die(mysql_error());
  $conn = mysql_connect($host, $user, $pass);
@@ -27,7 +27,7 @@ $bdd = "Blog";
  echo " ...... erreur";
  else
  mysql_select_db($bdd);*/
-$conn = new mysqli('localhost', 'root', 'tololo', 'Blog');
+$conn = new mysqli('localhost', 'root', 'cazeau', 'Blog');
 
 /* check connection */
 if (mysqli_connect_errno()) {
