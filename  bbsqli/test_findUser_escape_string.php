@@ -30,10 +30,13 @@ include ("navigation.php");
         
         <div id="containerHolder">
 			<div id="container">
-			    <?php
-
-require_once 'menu.php';
-?>
+			    <div id="sidebar">  
+        		    <ul class="sideNav"> 
+        		    <li><a title= "Post-> Like: Escape" href="test_findUser_escape_string.php">Trouver un user 1</a></li>
+                    <li><a title= "Post-> Like: Escape+addcslashes" href="test_findUser_addcslashes.php">Trouver un user 2</a></li> 
+        		    </ul>              	
+                    <!-- // .sideNav -->
+                </div>  
                 <!-- // #sidebar -->         
               
                 

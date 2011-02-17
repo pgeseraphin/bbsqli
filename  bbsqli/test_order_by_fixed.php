@@ -30,9 +30,13 @@ include ("navigation.php");
         
         <div id="containerHolder">
 			<div id="container">
-			    <?php
-require_once 'menu.php';
-?>
+			   <div id="sidebar">  
+        		    <ul class="sideNav"> 
+        		      <li><a title= "Post-> Order by: + Escape" href="test_order_by.php">Liste des Users 4</a></li>
+                      <li><a title= "Post-> Order by: + quote" href="test_order_by_fixed.php">Liste des Users 5</a></li>
+        		    </ul>              	
+                    <!-- // .sideNav -->
+                </div>  
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->

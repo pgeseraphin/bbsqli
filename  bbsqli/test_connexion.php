@@ -30,15 +30,12 @@ include ("navigation.php");
         <div id="containerHolder">
 			<div id="container">
         		<div id="sidebar">  
-        		    <ul class="sideNav">         
-         <li><a title= "Post->String: sans protection" href="test_connexion.php">Authentification [string]</a></li>
-         <li><a title= "Post->String: avec protection" href="test_connexion_escape_string.php">Authent. [string]+Escape  </a></li>
-         <li><a title= "Post->Int: sans protection" href="test_connexion_int.php">Authent. [int]</a></li>
-         <li><a title= "Post->Int: avec Escape" href="test_connexion_int_fixed1.php">Authent. [int]+Escape </a></li>
-         <li><a title= "Post->Int: avec Escape+Guillemet" href="test_connexion_int_fixed2.php">Authent. [int]+Guillemet </a></li>
-         <li><a title= "Post->Int: avec Escape+Guillemet+Inval" href="test_connexion_int_fixed3.php">Authent. [int]+Inval </a></li>
+        		<ul class="sideNav">         
+                  <li><a title= "Post->String: sans protection" href="test_connexion.php">1. Authentification[string] </a></li>
+                  <li><a title= "Post->String: Escape" href="test_connexion_escape_string.php">2. Authentification[string]  </a></li>
+                  <li><a title= "Post->String: Escape+guillemet" href="test_connexion_escape_guillemet.php">3. Authentification[string]</a></li>
                             	
-    </ul>              	
+                 </ul>              	
                     <!-- // .sideNav -->
                 </div>  
                   
