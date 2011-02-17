@@ -12,7 +12,7 @@ $autorisation = (isset($_POST['login'])) && (isset($_POST['mot_de_passe'])) && (
 
 if(!$autorisation) 
 {
-	header('Location: index.php');
+	header("Location: index.php");
 }
 else
 {
