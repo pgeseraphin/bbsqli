@@ -1,5 +1,5 @@
 <?php require_once 'admin_header.php'; ?>
-<script type="text/javascript" src="../style/js/lib.js"></script>
+<script type="text/javascript" src="style/js/lib.js"></script>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Cookies</a></h2>
+                <h2><a href="#">COOKIE</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
@@ -22,25 +22,31 @@
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-$userid = isset ($_GET['id']) ? $_GET['id'] : 0;
+$offset = isset ($_COOKIE['id']) ? $_COOKIE['id'] : 0;
+$offset = intval($offset);
 
-$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $userid;
+$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
+' FROM `Utilisateur` LIMIT ' . $offset . ', 10';
 
 $results = $conn->query($sql);
 
-if ($results->num_rows) {
-	if ($row = $results->fetch_array()) {
-		echo '<tr><td></td>' .
-		'<td class="action"><a href="admin_edit.php?id=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
-		'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr>';
-		echo '<tr><td>Type Utilisateur : ' . '</td>' . '<td>' . labelType($row['Type']) . '</td></tr>';
-		echo '<tr><td>Identifiant : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';
-		echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
+//if(!$results){
+//	echo 'Erreur : ' . mysqli_error($conn);
+//	
+//}else{
+	if ($results->num_rows) {
+		while ($row = $results->fetch_array()) {
+			echo '<tr><td></td>' .
+			'<td class="action"><a href="admin_edit.php?id=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
+			'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr>';
+			echo '<tr><td>Type Utilisateur : ' . '</td>' . '<td>' . labelType($row['Type']) . '</td></tr>';
+			echo '<tr><td>Identifiant : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';
+			echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
 		}
-} else {
-	echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
-}
+	} else {
+		echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
+	}
+//}
 ?> 
 </table>   	
                 	
