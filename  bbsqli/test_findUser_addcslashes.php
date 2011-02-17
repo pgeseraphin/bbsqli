@@ -43,7 +43,7 @@ require_once 'menu.php';
                 <div class="faille_exploit">
                     <p>$mot = $conn->real_escape_string($_POST['mot_cle']);</p><br/>
                     <p>$mot = addcslashes($mot, "%_");</p><br/>
-                    <p>$sql = "SELECT Login, Prenom, Nom, Email FROM Utilisateur WHERE Login LIKE '$mot%'";</p><br/>	                
+                    <p>$sql = "SELECT `Login`, `Prenom`, `Nom`, `Email` FROM `Utilisateur` WHERE `Login` LIKE '$mot%'";</p><br/>	                
 	                <p>$search_result = $conn->query($sql);</p>              
                   
                   </div>

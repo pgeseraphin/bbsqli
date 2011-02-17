@@ -39,7 +39,13 @@ require_once 'menu.php';
                 <!--h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2-->                               
                 
                 <div id="main">
-                
+                  <h3>Test de vulnérabilité : la clause LIMIT</h3>
+                  <div class="faille_exploit">
+                    <p>$offset = isset ($_POST['mot_cle']) ? $_POST['mot_cle'] : 0;</p><br/>
+                    <p>$offset = $conn->real_escape_string($offset);</p><br/>
+                    <p>$reponse = $conn->query("SELECT Login, Prenom, Nom, Email FROM Utilisateur LIMIT $offset, 6");</p>                         
+                  
+                  </div>                 
                     <form action="" method="post">					
 					<fieldset>
 					        <p>Numéro de page: </p>

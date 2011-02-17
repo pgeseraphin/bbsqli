@@ -40,6 +40,13 @@ require_once 'menu.php';
                 
                 <div id="main">
                 
+                  <h3>Test de vulnérabilité : la clause ORDER BY</h3>
+                  <div class="faille_exploit">
+                    <p>$order = isset ($_POST['mot_cle']) ? $_POST['mot_cle'] : 'IdUtilisateur';</p><br/>                    
+                    <p>$reponse = $conn->query("SELECT `Login`, `Prenom`, `Nom`, `Email` FROM `Utilisateur` ORDER BY $order");</p>                         
+                  
+                  </div>   
+                
                     <form action="" method="post">					
 					<fieldset>
 					        <p>Numéro de page: </p>
