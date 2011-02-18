@@ -8,6 +8,8 @@
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  * test
  *Wisner cazeau
+ *
+ *Saliou
  */
 session_start();
 require_once 'param_connexion.php';
