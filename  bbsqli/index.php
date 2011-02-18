@@ -26,15 +26,21 @@ require_once 'header.php';
         <?php
 
 
-include ("navigation.php");
+include ("navigat_index.php");
 ?>
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
 			<div id="container">
-			    <?php
-        		require_once 'menu.php';
-        		?>
+			    <div id="sidebar">  
+        		    <ul class="sideNav">         
+                      <li><a href="inscription.php">S'inscrire</a></li>                	    
+                      <li><a href="#">Céer un blog</a></li>                    	
+                      <li><a href="#">Archives</a></li>  
+                            	
+                    </ul>              	
+                    <!-- // .sideNav -->
+                </div> 
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->
