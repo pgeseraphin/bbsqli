@@ -15,7 +15,7 @@ echo '<ul id="mainNav">' .
 '<li><a href="admin/get_string/test_GET_string.php">GET_string</a></li>' .
 
 '<li><a href="admin/get_string_erreur/test_GET_string.php">GET_str_Err</a></li>' .
-'<li><a href="index.php">POST</a></li>' .
+'<li><a href="test_post.php">POST</a></li>' .
 '<li><a href="admin/cookie/test_COOKIE.php">COOKIE</a></li>'.
 '<li><a href="admin/cookie_string/test_COOKIE_string.php">COOKIE string</a></li>';
 
