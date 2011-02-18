@@ -1,8 +1,6 @@
 <div id="sidebar">
     <ul class="sideNav">
-         <li><a href="inscription.php">S'inscrire</a></li>                	    
-         <li><a href="#">Céer un blog</a></li>                    	
-         <li><a href="#">Archives</a></li>
+         
          <li><a title= "Post->String: sans protection" href="test_connexion.php">1. Authentification[string] </a></li>
          <li><a title= "Post->String: Escape" href="test_connexion_escape_string.php">2. Authentification[string]  </a></li>
          <li><a title= "Post->String: Escape+guillemet" href="test_connexion_escape_guillemet.php">3. Authentification[string]</a></li>
