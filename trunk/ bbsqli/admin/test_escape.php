@@ -14,11 +14,19 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Administration</a></h2>
+                <h2><a href="#">GET INT (sans affichage des erreurs)</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
-					<h3>Affichage des informations</h3>
+                <br/>
+                $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
+                <br/>
+$userid = $conn->real_escape_string($userid);
+<br/><br/>
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur WHERE IdUtilisateur=' . $userid;
+<br/><br/>
+					<h3>Escape</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php

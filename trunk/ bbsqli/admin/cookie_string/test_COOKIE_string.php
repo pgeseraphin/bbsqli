@@ -16,7 +16,7 @@
 jush.style('style/css/jush.css');
 jush.highlight_tag('code');
 </script>
-<h1>COOKIE avec string</h1>
+<h1>COOKIE string (sans erreur)</h1>
 <table border="1">
 
 <tr><td><a href="test_unprotect.php">Sans protection</a></td>

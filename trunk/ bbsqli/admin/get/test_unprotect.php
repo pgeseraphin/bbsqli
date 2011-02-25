@@ -14,26 +14,31 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">GET</a></h2>
+                <h2><a href="#">GET INT (avec affichage des erreurs)</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
-					<h3>Affichage des informations</h3>
+					<br/>
+					$userid = isset ($_GET['id']) ? $_GET['id'] : 0;
+<br/><br/>
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur WHERE IdUtilisateur=' . $userid;
+<br/><br/>
+
+<h3>Sans protection</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
-
-
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur WHERE IdUtilisateur=' . $userid;
 
 $results = $conn->query($sql);
-if(!$results){
+if (!$results) {
 	echo 'Erreur : ' . mysqli_error($conn);
-	
-}else{
+
+} else {
 	if ($results->num_rows) {
 		if ($row = $results->fetch_array()) {
 			echo '<tr><td></td>' .
@@ -48,9 +53,7 @@ if(!$results){
 	}
 }
 ?> 
-</table>   	
-                	
-                	
+</table> 	
                 </div>
                 <!-- // #main -->
                 

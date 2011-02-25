@@ -23,12 +23,14 @@ $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur WHERE IdUtilisateur=' . $userid;</code></pre></td></tr>
+
 <tr><td><a href="test_escape.php?id=1">Escape</a></td>
 <td><pre><code class="jush">
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
 $userid = $conn->real_escape_string($userid);
 $sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
 ' FROM Utilisateur WHERE IdUtilisateur=' . $userid;</code></pre></td></tr>
+
 <tr><td><a href="test_escape_quote.php?id=1">Escape + Guillemet</a></td>
 <td><pre><code class="jush">
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;
@@ -36,6 +38,7 @@ $userid = $conn->real_escape_string($userid);
 
 $sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
 ' FROM `Utilisateur` WHERE `IdUtilisateur`="' . $userid . '"';</code></pre></td></tr>
+
 <tr><td><a href="test_escape_quote_intval.php?id=1">Escape + Guillemet + Intval</a></td>
 <td><pre><code class="jush">
 $userid = isset ($_GET['id']) ? $_GET['id'] : 0;

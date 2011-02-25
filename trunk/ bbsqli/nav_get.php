@@ -1,19 +1,13 @@
 <?php
 
-/*
- * Created on 5 janv. 2011
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
-
 echo '<ul id="mainNav">' .
 '<li><a href= "index.php">ACCUEIL</a></li>' .
 '<!-- Use the "active" class for the active menu item  -->' .
-'<li><a href="test_get.php">GET</a></li>' .
-'<li><a href="test_post.php">POST</a></li>' .
-'<li><a href="admin/cookie/test_COOKIE.php">COOKIE</a></li>'.
-'<li><a href="admin/cookie_string/test_COOKIE_string.php">COOKIE string</a></li>';
+'<li><a href="admin/test_unprotect.php?id=1">GET INT (sans erreur)</a></li>' .
+'<li><a href="admin/get/test_unprotect.php?id=1">GET INT (avec erreur)</a></li>'.
+'<li><a href="admin/get_string/test_string_GET.php?login=">GET STR (sans erreur)</a></li>'.
+'<li><a href="admin/get_string_erreur/test_string_GET.php?login=">GET STR (avec erreur)</a></li>';
+
 
 session_start();
 
@@ -33,3 +27,4 @@ if (!isset($_SESSION['user_id'])) {
 
 echo '</li></ul>';
 ?>
+

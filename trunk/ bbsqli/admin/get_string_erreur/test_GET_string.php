@@ -30,6 +30,7 @@ $user = isset ($_GET['login']) ? $_GET['login'] : '';
 $user = $conn->real_escape_string($user);
 $sql = 'SELECT Type, Login, Email' .
 ' FROM Utilisateur WHERE Login="' . $user.'"';</code></pre></td></tr>
+
 <tr><td><a href="test_string_escape_quote.php?login=">Escape + Guillemet</a></td>
 <td><pre><code class="jush">
 $user = isset ($_GET['login']) ? $_GET['login'] : '';

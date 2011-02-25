@@ -8,11 +8,11 @@
  */
 
 echo '<ul id="mainNav">' .
-'<li><a href= "../../index.php" class="active">ACCUEIL</a></li>' .
+'<li><a href= "../index.php" class="active">ACCUEIL</a></li>' .
 '<!-- Use the "active" class for the active menu item  -->' .
-'<li><a href="../../test_get.php">GET</a></li>' .
-'<li><a href="../../test_post.php">POST</a></li>' .
-'<li><a href="../../test_cookie.php">COOKIE</a></li>';
+'<li><a href="test_GET.php">GET</a></li>' .
+'<li><a href="../../index.php">POST</a></li>' .
+'<li><a href="../cookie/test_COOKIE.php">COOKIE</a></li>';
 
 session_start();
 

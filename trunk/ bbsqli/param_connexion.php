@@ -27,7 +27,7 @@ $bdd = "Blog";
  echo " ...... erreur";
  else
  mysql_select_db($bdd);*/
-$conn = new mysqli('localhost', 'root', 'cazeau', 'Blog');
+$conn = new mysqli('localhost', 'root', 'tololo', 'Blog');
 
 /* check connection */
 if (mysqli_connect_errno()) {
