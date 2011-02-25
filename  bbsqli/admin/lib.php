@@ -1,4 +1,5 @@
 <?php
+
 //Pour obtenir l'URL de la page courante
 function curPageURL() {
 	$pageURL = 'http';
@@ -36,4 +37,10 @@ function labelType($type) {
 	}
 }
 //fin labelType()
+
+//pour avoir l'adresse reelle du client
+function getRealIP() {
+	return isset ($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+}
+//fin getRealIP
 ?>
