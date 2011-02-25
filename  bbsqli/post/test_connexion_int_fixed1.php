@@ -85,7 +85,7 @@ if ($valide) {
 		$_SESSION['user_login'] = $obj->Login;
 		$_SESSION['user_type'] = $obj->Type;		
 
-		header('Location: user_profil.php');
+		header('Location: ../user_profil.php');
 	} else {
 
 		//echo " Echec d'authentification ";
