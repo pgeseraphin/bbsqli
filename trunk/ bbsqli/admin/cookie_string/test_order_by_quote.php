@@ -14,11 +14,25 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">COOKIE</a></h2>
+                <h2><a href="#">COOKIE STRING (sans affichage des erreurs)</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
-					<h3>Affichage des informations</h3>
+                <br/>
+                $order = isset ($_COOKIE['id2']) ? $_COOKIE['id2'] : '';
+                <br/>
+if (!in_array($order, Array (
+		'IdUtilisateur',
+		'Type',
+		'Login',
+		'Email'
+	)))
+	$order = 'IdUtilisateur';
+<br/><br/>
+$sql = 'SELECT `IdUtilisateur`, `Type`,	`Login`, `Email`' .
+' FROM `Utilisateur` ORDER BY `' . $order . '`';
+<br/><br/>
+					<h3>ORDER BY + quote</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php

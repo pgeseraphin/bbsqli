@@ -14,7 +14,7 @@ require_once 'header.php';
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <?php
 
-require_once 'nav_get.php';
+require_once 'nav_cookie.php';
 ?>
         <!-- // #end mainNav -->
         
@@ -22,10 +22,10 @@ require_once 'nav_get.php';
 			<div id="container">
 			     <div id="sidebar">  
         		    <ul class="sideNav"> 
-        		     <li><a href="admin/test_GET_int.php">GET INT (sans erreur)</a></li>
-        		     <li><a href="admin/get/test_GET_int_erreur.php">GET INT (avec erreur)</a></li>         		     
-        		    <li><a href="admin/get_string/test_GET_string_.php">GET STR (sans erreur)</a></li>
-        		     <li><a href="admin/get_string_erreur/test_GET_string_erreur.php">GET STR (avec erreur)</a></li>         		     
+        		     <li><a href="admin/cookie/test_COOKIE_int.php">COOKIE INT (sans erreur)</a></li>
+        		     <li><a href="admin/cookie_erreur/test_COOKIE_int_erreur.php">COOKIE INT (avec erreur)</a></li>         		     
+        		    <li><a href="admin/cookie_string/test_COOKIE_string_.php">COOKIE STR (sans err.)</a></li>
+        		     <li><a href="#">COOKIE STR (avec err.)</a></li>         		     
         		   </ul>              	
                     <!-- // .sideNav -->
                 </div>  

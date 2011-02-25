@@ -14,11 +14,19 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">COOKIE avec string</a></h2>
+                <h2><a href="#">COOKIE STRING (sans affichage des erreurs)</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
-					<h3>Affichage des informations</h3>
+                <br/>
+                $user = isset ($_COOKIE['id']) ? $_COOKIE['id'] : '';
+                <br/>
+$user = $conn->real_escape_string($user);
+<br/><br/>
+$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
+' FROM Utilisateur WHERE Login="' . $user . '"';
+<br/><br/>
+					<h3>Escape</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
