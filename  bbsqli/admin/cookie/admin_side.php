@@ -1,9 +1,12 @@
 <div id="sidebar">
 	<ul class="sideNav">
-    	<li><a href="../admin.php?cat=3" <?php if($active==3) echo " class=active"; ?>>Utilisateurs</a></li>
-    	<li><a href="../admin.php?cat=2" <?php if($active==2) echo " class=active"; ?>>Mod&eacute;rateurs</a></li>
-    	<li><a href="../admin.php?cat=1" <?php if($active==1) echo " class=active"; ?>>Administrateurs</a></li>
-    	<li><a href="../admin_profil.php" <?php if($active==4) echo " class=active"; ?>>Mon Profil</a></li>                    	
+    	<li><a href="test_unprotect.php">Sans protection</a></li>
+    	<li><a href="test_escape.php">Escape</a></li>
+    	<li><a href="test_escape_quote.php">Escape + Guillemet</a></li>
+    	<li><a href="test_escape_quote_intval.php">Escape + Guill. + Intval</a></li>
+    	<li><a href="test_limit.php">LIMIT</a></li>
+    	<li><a href="test_limit_quote_intval.php">LIMIT + Guillemet + intval</a></li>
+    	<li><a href="test_limit_is_numeric.php">LIMIT + is_numeric</a></li>                    	
     </ul>
     <!-- // .sideNav -->
 </div>    
