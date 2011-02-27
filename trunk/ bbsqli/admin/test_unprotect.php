@@ -49,6 +49,7 @@ if ($results->num_rows) {
 }
 ?> 
 </table>   	
+</form>
                 	
                 	
                 </div>
