@@ -53,7 +53,8 @@ if (!$results) {
 	}
 }
 ?> 
-</table> 	
+</table> 
+</form>	
                 </div>
                 <!-- // #main -->
                 
