@@ -20,6 +20,8 @@
                 <form action="" class="jNice">
                 <br/>
                 $order = isset ($_GET['login']) ? $_GET['login'] : '';
+                <br/>
+$order = $conn->real_escape_string($order);
                 <br/><br/>
 $sql = 'SELECT Type, Login, Email' .
 ' FROM Utilisateur ORDER BY "' . $order.'"';
@@ -29,6 +31,7 @@ $sql = 'SELECT Type, Login, Email' .
                 <table cellpadding="0" cellspacing="0">                
 <?php
 $order = isset ($_GET['login']) ? $_GET['login'] : '';
+$order = $conn->real_escape_string($order);
 
 $sql = 'SELECT Type, Login, Email' .
 ' FROM Utilisateur ORDER BY "' . $order.'"';
