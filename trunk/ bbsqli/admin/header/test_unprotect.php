@@ -46,7 +46,15 @@ if ($results->num_rows) {
 		echo '<tr><td>Valeur : ' . '</td>' . '<td>' . $row['Valeur'] . '</td></tr>';
 	}
 } else {
-	echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
+	echo 'Votre HTTP_USER_AGENT n&#39;existe pas dans la BD.<br/><br/>';
+	
+	$sql = 'INSERT INTO Header (Type, Valeur)' .
+	' VALUES ("HTTP_USER_AGENT", "' . $user_agent . '")';
+	
+	if ($conn->query($sql)) {
+		echo 'Votre HTTP_USER_AGENT &agrave &eacute;t&eacute; ins&eacute;r&eacute; dans la BD.<br/><br/>';
+		echo 'HTTP_USER_AGENT : '.$user_agent.'<br/><br/>';
+	}
 }
 //}
 ?> 
