@@ -14,7 +14,7 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">HEADER (sans affichage des erreurs)</a></h2>
+                <h2><a href="#">HEADER (avec affichage des erreurs)</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">

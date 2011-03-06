@@ -1,4 +1,4 @@
-<?php require_once 'admin_header.php'; ?>
+<?php require_once 'admin_header.php'; $active = 2;?>
 <script type="text/javascript" src="../style/js/lib.js"></script>
 </head>
 
