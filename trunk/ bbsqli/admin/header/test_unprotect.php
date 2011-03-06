@@ -1,4 +1,4 @@
-<?php require_once 'admin_header.php'; ?>
+<?php require_once 'admin_header.php'; $active = 1; ?>
 <script type="text/javascript" src="../style/js/lib.js"></script>
 </head>
 
@@ -14,43 +14,44 @@
 				<?php require_once 'admin_side.php'; ?>
 					               
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">GET</a></h2>
+                <h2><a href="#">HEADER (sans affichage des erreurs)</a></h2>
                 
                 <div id="main">
                 <form action="" class="jNice">
-					<h3>Affichage des informations</h3>
+					<br/>
+					$user_agent = isset ($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+<br/><br/>
+$sql = 'SELECT IdHeader, Type, Valeur' .
+' FROM Header WHERE Valeur="' . $user_agent.'"';
+<br/><br/>
+
+<h3>Sans protection</h3>
                     	
                 <table cellpadding="0" cellspacing="0">                
 <?php
+$user_agent = isset ($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
-$userid = isset ($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 0;
-
-$sql = 'SELECT IdUtilisateur, Type,	Login, Email' .
-' FROM Utilisateur WHERE IdUtilisateur=' . $userid;
+$sql = 'SELECT IdHeader, Type, Valeur' .
+' FROM Header WHERE Valeur="' . $user_agent . '"';
 
 $results = $conn->query($sql);
-
-//if(!$results){
+//if (!$results) {
 //	echo 'Erreur : ' . mysqli_error($conn);
-//	
-//}else{
+//
+//} else {
 if ($results->num_rows) {
 	if ($row = $results->fetch_array()) {
-		echo '<tr><td></td>' .
-			'<td class="action"><a href="admin_edit.php?id=' . $row['IdUtilisateur'] . '" class="edit">Editer</a>' .
-			'<a href="javascript:supp(' . $row['IdUtilisateur'] . ');" class="delete">Supprimer</a></td></tr>';
-			echo '<tr><td>Type Utilisateur : ' . '</td>' . '<td>' . labelType($row['Type']) . '</td></tr>';
-			echo '<tr><td>Identifiant : ' . '</td>' . '<td>' . $row['Login'] . '</td></tr>';
-			echo '<tr><td>Email : ' . '</td>' . '<td>' . $row['Email'] . '</td></tr>';
+		echo '<tr><td>ID : ' . '</td>' . '<td>' . $row['IdHeader'] . '</td></tr>';
+		echo '<tr><td>Type : ' . '</td>' . '<td>' . $row['Type'] . '</td></tr>';
+		echo '<tr><td>Valeur : ' . '</td>' . '<td>' . $row['Valeur'] . '</td></tr>';
 	}
 } else {
 	echo '<td>Il n&apos;y a pas de donn&eacute;es &agrave; afficher</td>';
 }
 //}
 ?> 
-</table>   	
-                	
-                	
+</table> 
+</form>	
                 </div>
                 <!-- // #main -->
                 
