@@ -10,7 +10,7 @@
 echo '<ul id="mainNav">' .
 '<li><a href= "index.php">ACCUEIL</a></li>' .
 '<!-- Use the "active" class for the active menu item  -->' .
-'<li><a href="test_post1.php">POST (sans afficher des erreurs)</a></li>' .
+'<li><a href="test_post1.php" class="active">POST (sans afficher des erreurs)</a></li>' .
 '<li><a href="post/test_post2.php">POST (avec afficher des erreurs)</a></li>';
 
 
