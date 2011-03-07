@@ -17,7 +17,7 @@ require_once 'header.php';
 
 <div id="wrapper">
     	
-    	<h1><a href="#"><span>Mon Blog</span></a></h1>
+    	<h1><a href="#"><span>SQLi Test Platform</span></a></h1>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
        <?php

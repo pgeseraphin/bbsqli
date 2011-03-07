@@ -9,7 +9,7 @@ require_once 'header.php';
 
 <div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
-    	<h1><a href= "index.php"><span>Mon Blog</span></a></h1>
+    	<h1><a href= "index.php"><span>SQLi Test Platform</span></a></h1>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <?php
