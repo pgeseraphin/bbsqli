@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="admin/style/img/favicon.ico" rel="icon" type="image/x-icon" />
-<title>Mon Blog - Profil</title>
+<title>SQLi Test Platform</title>
 
 <!-- CSS -->
 <link href="lib/template/style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />

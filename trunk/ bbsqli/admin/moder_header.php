@@ -49,7 +49,7 @@ switch ($_GET["cat"]) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="style/img/favicon.ico" rel="icon" type="image/x-icon" />
-<title>Mon Blog - Mod&eacute;ration</title>
+<title>SQLi Test Platform - Mod&eacute;ration</title>
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
