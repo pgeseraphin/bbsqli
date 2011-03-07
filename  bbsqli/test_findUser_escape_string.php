@@ -32,7 +32,7 @@ include ("navigation.php");
 			<div id="container">
 			    <div id="sidebar">  
         		    <ul class="sideNav"> 
-        		    <li><a title= "Post-> Like: Escape" href="test_findUser_escape_string.php">Trouver un user 1</a></li>
+        		    <li><a title= "Post-> Like: Escape" href="test_findUser_escape_string.php" class="active">Trouver un user 1</a></li>
                     <li><a title= "Post-> Like: Escape+addcslashes" href="test_findUser_addcslashes.php">Trouver un user 2</a></li> 
         		    </ul>              	
                     <!-- // .sideNav -->

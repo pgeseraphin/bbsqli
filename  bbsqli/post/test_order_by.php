@@ -32,7 +32,7 @@ include ("navigation.php");
 			<div id="container">
 			    <div id="sidebar">  
         		    <ul class="sideNav"> 
-        		      <li><a title= "Post-> Order by: + Escape" href="test_order_by.php">Liste des Users 4</a></li>
+        		      <li><a title= "Post-> Order by: + Escape" href="test_order_by.php" class="active">Liste des Users 4</a></li>
                       <li><a title= "Post-> Order by: + quote" href="test_order_by_fixed.php">Liste des Users 5</a></li>
         		    </ul>              	
                     <!-- // .sideNav -->
