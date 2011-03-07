@@ -32,7 +32,7 @@ include ("navigation.php");
         		<div id="sidebar">  
         		    <ul class="sideNav">         
          <li><a title= "Post->Int: sans protection" href="test_connexion_int.php">4. Authent.[int]</a></li>
-         <li><a title= "Post->Int: avec Escape" href="test_connexion_int_fixed1.php">5. Authent. [int]+Escape </a></li>
+         <li><a title= "Post->Int: avec Escape" href="test_connexion_int_fixed1.php" class="active">5. Authent. [int]+Escape </a></li>
          <li><a title= "Post->Int: avec Escape+Guillemet" href="test_connexion_int_fixed2.php">6. Authent. [int]+Guillemet </a></li>
          <li><a title= "Post->Int: avec Escape+Guillemet+Intval" href="test_connexion_int_fixed3.php">7. Authent. [int]+Inval </a></li>
 

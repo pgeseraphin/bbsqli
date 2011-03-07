@@ -34,7 +34,7 @@ include ("navigation.php");
         		    <ul class="sideNav"> 
         		     <li><a title= "Post-> Limit: Escape" href="test_search.php">Liste des Users 1</a></li>
                      <li><a title= "Post-> Limit: Guillemet+Intval" href="test_search_fixed1.php">Liste des Users 2</a></li>
-                     <li><a title= "Post-> Limit: is_numeric" href="test_search_fixed2.php">Liste des Users 3</a></li>
+                     <li><a title= "Post-> Limit: is_numeric" href="test_search_fixed2.php" class="active">Liste des Users 3</a></li>
         		    </ul>              	
                     <!-- // .sideNav -->
                 </div>  
